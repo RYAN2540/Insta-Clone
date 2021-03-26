@@ -1,0 +1,58 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+#login img{
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+#login body{
+    background-color: #fafafa;
+}
+
+#wrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 10rem;
+}
+
+#login .container{
+    width: 100%;
+    max-width: 93.5rem;
+    margin: 3rem auto 0;
+}
+
+#wrapper > .container{
+    display: flex;
+    padding: 0 8rem;
+}
+
+.phone-app-demo{
+    height: 61.8rem;
+    background: url('static/images/phones.png') center no-repeat;
+    flex: 1;
+}
+
+.form-data{
+    width: 100%;
+    max-width: 35rem;
+    margin-top: 3rem;
+}
