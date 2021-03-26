@@ -1,31 +1,81 @@
-{%extends "registration/base.html"%} {% load bootstrap3 %}
+{%extends "registration/base.html"%}
+{% load static %}
+{% load bootstrap3 %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      {% if form.errors %}
-        <p> Some Information Might be Incorrect </p>
-      {% endif %}
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="text-center">Sign Up</h3>
+<div id="wrapper" id="login">
+  <div class="container">
+    <div class="form-data">
+      <form action="/accounts/register/" method="post">
+        {% csrf_token %}
+        <div class="logo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
+            alt="">
         </div>
-        <div class="panel-body">
-          <form  action="/accounts/register/" method="post">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
-            </div>
-            <input type="hidden" name="next" value="{{next}}">
-          </form>
+        {% bootstrap_form form%}
+        <button class="form-btn" type="submit">Login</button>
+        <span class="has-separator">Or</span>
+        <a href="#" class="facebook-login" style="color: white !important; background-color: #385185 !important;">
+          <i class="fab fa-facebook"></i>Log in with Facebook
+        </a>
+        <a href="#" class="password-reset">Forgot password?</a>
+        <input type="hidden" name="next" value="{{next}}">
+      </form>
+      <div class="sign-up">
+        Don't have an account <a href="/accounts/login/" class="ml-2">Login in</a>
+      </div>
+      <div class="get-the-app">
+        <span>Get the app</span>
+        <div class="badges">
+          <img src="{% static 'images/ios.png' %}" alt="">
+          <img src="{% static 'images/android.png' %}" alt="">
         </div>
       </div>
+      <footer>
+        <div class="container">
+          <nav class="footer-nav">
+            <ul>
+              <li>
+                <a href="#">About us</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+              <li>
+                <a href="#">Press</a>
+              </li>
+              <li>
+                <a href="#">Api</a>
+              </li>
+              <li>
+                <a href="#">Jobs</a>
+              </li>
+              <li>
+                <a href="#">Privacy</a>
+              </li>
+              <li>
+                <a href="#">Terms</a>
+              </li>
+              <li>
+                <a href="#">Directory</a>
+              </li>
+              <li>
+                <a href="#">Profiles</a>
+              </li>
+              <li>
+                <a href="#">Hashtags</a>
+              </li>
+              <li>
+                <a href="#">Languages</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright-notice">
+            &copy; 2020 Instagram
+          </div>
+        </div>
+      </footer>
     </div>
-    <!-- empty div -->
-    <div class="col-md-4"></div>
   </div>
 </div>
 {% endblock %}
