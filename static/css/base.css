@@ -153,6 +153,7 @@ a{
 .sign-up a{
     color: #3897f0;
     font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .get-the-app{
@@ -190,8 +191,9 @@ footer .container{
     justify-content: space-between;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-top: 0;
+    flex-wrap: wrap;
 }
 
 .footer-nav ul{
@@ -211,6 +213,56 @@ footer .container{
 .copyright-notice{
     color: #999999;
 }
+
+@media (max-width: 900px){
+    .phone-app-demo{
+        display: none;
+    }
+
+    .form-data{
+        margin: 0 auto;
+    }
+
+    #wrapper > .container{
+        padding: 0;
+    }
+
+    footer .container{
+        padding: 0 2rem;
+        justify-content: center;
+    }
+
+    .footer-nav ul{
+        justify-content: center;
+    }
+
+    .footer-nav ul li{
+        margin-bottom: 1rem;
+    }
+}
+
+@media(max-width: 450px){
+    #wrapper{
+        padding-top: 0;
+    }
+
+    .form-data form{
+        background-color: transparent;
+        border: none;
+        padding: 0 2rem;
+    }
+
+    .sign-up{
+        background-color: transparent;
+        border: none;
+        margin: 4rem 0;
+    }
+
+    footer{
+        padding-bottom: 2rem;
+    }
+}
+
 /* HOME */
 
 .top {
