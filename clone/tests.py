@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 
 class ImageTestClas(TestCase):
     def setUp(self):
-        self.lorna = User(username = "ryan", email = "austinbrian005@gmail.com",password = "1234")
-        self.food = Image(image = 'imageurl', name ='food', caption = 'Chicken Taco', profile = self.lorna)
-        self.maua = Image(image = 'imageurl', name ='maua', caption = 'Lillies', profile = self.lorna)
+        self.ryan = User(username = "ryan", email = "ryan@gmail.com",password = "1234")
+        self.food = Image(image = 'imageurl', name ='food', caption = 'Chicken Taco', profile = self.ryan)
+        self.maua = Image(image = 'imageurl', name ='maua', caption = 'Lillies', profile = self.ryan)
 
-        self.lorna.save()
+        self.ryan.save()
         self.food.save_image()
 
     def tearDown(self):
@@ -34,21 +34,54 @@ class ImageTestClas(TestCase):
 
     def test_get_profile_images(self):
         self.maua.save_image()
-        images = Image.get_profile_images(self.lorna)
+        images = Image.get_profile_images(self.ryan)
         self.assertEqual(len(images),2)
 
 class ProfileTestClas(TestCase):
     def setUp(self):
-        self.lorna = User(username = "lorna", email = "lorna@gmail.com",password = "1234")
-        self.lorna.save()
+        self.ryan = User(username = "ryan", email = "ryan@gmail.com",password = "1234")
+        self.ryan.save()
 
     def tearDown(self):
         Profile.objects.all().delete()
         User.objects.all().delete()
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.lorna, User))
+        self.assertTrue(isinstance(self.ryan, User))
 
     def test_search_user(self):
-        user = Profile.search_user(self.lorna)
+        user = Profile.search_user(self.ryan)
         self.assertEqual(len(user), 1)
+
+class CommentTestClas(TestCase):
+    def setUp(self):
+        self.ryan = User(username = "ryan", email = "ryan@gmail.com",password = "1234")
+        self.food = Image(image = 'imageurl', name ='food', caption = 'Chicken Taco', profile = self.ryan)
+        self.comment = Comment(image=self.food, content= 'Looks delicious', user = self.ryan)
+
+        self.ryan.save()
+        self.food.save_image()
+        self.comment.save_comment()
+
+    def tearDown(self):
+        Image.objects.all().delete()
+        Comment.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.comment, Comment))
+
+    def test_save_comment(self):
+        comments = Comment.objects.all()
+        self.assertTrue(len(comments)> 0)
+
+    def test_delete_comment(self):
+        comments1 = Comment.objects.all()
+        self.assertEqual(len(comments1),1)
+        self.comment.delete_comment()
+        comments2 = Comment.objects.all()
+        self.assertEqual(len(comments2),0)
+
+    def test_get_image_comments(self):
+        comments = Comment.get_image_comments(self.food)
+        self.assertEqual(comments[0].content, 'Looks delicious')
+        self.assertTrue(len(comments) > 0)
