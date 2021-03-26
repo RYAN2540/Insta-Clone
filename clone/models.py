@@ -32,3 +32,15 @@ class Image(models.Model):
 
     class Meta:
         ordering = ['-post_date']
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    profile_pic = CloudinaryField('image')
+    bio =  models.TextField(blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+    @classmethod
+    def search_user(cls,username): 
+        return User.objects.filter(username__icontains = username)
