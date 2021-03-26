@@ -53,7 +53,7 @@ a{
 }
 .phone-app-demo{
     height: 61.8rem;
-    background: url('../../static/images/phones2.png') center no-repeat;
+    background: url('../../static/images/phones.png') center no-repeat;
     flex: 1;
     margin-right: -100px;
 }
