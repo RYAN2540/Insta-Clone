@@ -37,4 +37,18 @@ class ImageTestClas(TestCase):
         images = Image.get_profile_images(self.lorna)
         self.assertEqual(len(images),2)
 
+class ProfileTestClas(TestCase):
+    def setUp(self):
+        self.lorna = User(username = "lorna", email = "lorna@gmail.com",password = "1234")
+        self.lorna.save()
 
+    def tearDown(self):
+        Profile.objects.all().delete()
+        User.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.lorna, User))
+
+    def test_search_user(self):
+        user = Profile.search_user(self.lorna)
+        self.assertEqual(len(user), 1)
