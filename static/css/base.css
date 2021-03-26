@@ -152,9 +152,8 @@
                 /* page body */
 
 .main {
-    /* background-color: rgb(240, 240, 240); */
+    margin-top: 7%;
     width: 100%;
-    height: 2300px;
     background: #fafafa;
 }
 
