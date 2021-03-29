@@ -29,8 +29,18 @@
             <img class="upload-content" src="{{image.image.url}}">
         </div>
         <div class="upload-actions">
-            <i class="far fa-heart"></i>
-            <i class="far fa-comment"></i>
+            % if liked %}
+            <form action="{% url 'like_image' image.id %}" method="POST">
+                {% csrf_token %}
+                <i class="far fa-heart" type="submit" name="image_id" value={{image.id}} style="background-color: red;"></i>
+            </form>
+            {% else %}
+            <form action="{% url 'like_image' image.id %}" method="POST">
+                {% csrf_token %}
+                <i class="far fa-heart" type="submit" name="image_id" value={{image.id}}></i>
+            </form>
+            {% endif %}
+            <i class=" far fa-comment"></i>
             <i class="far fa-paper-plane"></i>
         </div>
         <div class="liked">
@@ -46,24 +56,12 @@
                 </span>
             </span>
         </div>
-        <!-- <div class="upload-caption comments liked">
-            <a class="likes comment" href="#">View all comments</a>
-        </div> -->
         {% for comment in comments %}
         {% if comment.image.id == image.id %}
         <div class="upload-caption comments">
             <span class="post">
                 <a href="#" class="likes">{{comment.user}}</a>
                 <span class="post-link">{{comment.content}}</span>
-                <!-- span class="post-link">
-                    <button class="u-actions-li  like" class="float-right">
-                        <a href="#" class="push2">
-                            <img height="12px"
-                                src="https://www.pinclipart.com/picdir/big/33-337369_heart-shaped-clipart-instagram-heart-sign-icon-transparent.png"
-                                alt="">
-                        </a>
-                    </button>
-                </span -->
             </span>
         </div>
         {% endif %}

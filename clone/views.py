@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Image, Profile, Comment
 from .forms import UploadImageForm, EditBioForm
-
+from django.urls import reverse
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -64,6 +64,17 @@ def comment(request, image_id):
     comment.save_comment()
 
     return redirect('home')
+
+def like_image(request,id):
+    image = Image.objects.get(pk=id)
+    liked = False
+    if image.likes.filter(id=request.user.id).exists():
+        image.likes.remove(request.user)
+        liked = False
+    else:
+        image.likes.add(request.user)
+        liked = True 
+    return HttpResponseRedirect(reverse('home',args =[int(image.id)]))
 
 def profile_edit(request):
     current_user = request.user
