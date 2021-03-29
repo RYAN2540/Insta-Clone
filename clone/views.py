@@ -57,3 +57,19 @@ def comment(request, image_id):
     comment.save_comment()
 
     return redirect('home')
+
+def edit_profile(request):
+    current_user = request.user
+    if request.method == "POST":
+        form = EditBioForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile_pic = form.cleaned_data['profile_pic']
+            bio  = form.cleaned_data['bio']
+            updated_profile = Profile.objects.get(user= current_user)
+            updated_profile.profile_pic = profile_pic
+            updated_profile.bio = bio
+            updated_profile.save()
+        return redirect('profile')
+    else:
+        form = EditBioForm()
+    return render(request, 'edit_profile.html', {"form": form})
