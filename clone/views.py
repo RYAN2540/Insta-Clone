@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Image, Profile, Comment
-from .forms import UploadImageForm
+from .forms import UploadImageForm, EditBioForm
 
 
 @login_required(login_url='/accounts/login/')
@@ -34,7 +34,6 @@ def upload_image(request):
         form = UploadImageForm()
         return render(request, 'upload_image.html', {"form": form, "title": title})
 
-@login_required
 def search(request):
     if "user" in request.GET and request.GET["user"]:
         searched_user = request.GET.get("user")
@@ -49,7 +48,6 @@ def search(request):
         message = "You haven't searched for any term"
         return render(request,'profile/profile.html', {"message": message})
 
-@login_required
 def comment(request, image_id):
     image = Image.objects.get(pk=image_id)
     content= request.GET.get("comment")
