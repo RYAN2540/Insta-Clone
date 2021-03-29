@@ -1,0 +1,427 @@
+/*navbar*/
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    height: 6rem;
+    top: 0;
+    z-index: 3;
+    background-color: #fff;
+    padding: 0 5%;
+}
+.nav-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    top: 25%;
+    right: 0;
+}
+.nav-icons a{
+    margin-right: 50%;
+    color: inherit;
+}
+.nav-icons .glyphicon, .nav-icons .fas{
+    font-size: 2.5rem;
+}
+
+/*images*/
+.main {
+    margin-top: 7%;
+    width: 100%;
+}
+/* post */
+.section {
+    justify-content: space-between;
+    margin-left: 13.5%;
+    background: #fff;
+    /* width: 47%; */
+    max-width: 47%;
+    border-radius: 4px;
+    display: block;
+    float: left;
+    margin-bottom: 60px;
+}
+/*post header */
+.top-section {
+    background: #fafafa;
+}
+.top-section {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    padding: 16px;
+    width: 100%;
+    border-bottom: 1px solid #efefef;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.d-flex {
+    display: flex;
+}
+.profile-pic {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.picture {
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+}
+.profile {
+    margin: 10px 15px;
+}
+.profile_tag {
+    font-size: 1.4rem;
+}
+.profile a {
+    text-decoration: none;
+    color: #262626;
+}
+.opt {
+    margin-top: 2%;
+}
+.options {
+    display: flex;
+    flex-direction: row;
+}
+.op {
+    height: 3px;
+    width: 3px;
+    margin: 1px;
+    background-color: #262626;
+    border-radius: 50%;
+}
+.upload {
+    /* background-size: cover; */
+    /* height: 400px; */
+    height: 50rem;
+    width: 100%;
+    /* background: #fff; */
+    display: flex;
+    justify-content: center;
+}
+
+.upload-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-actions {
+    display: flex;
+    height: 40px;
+    padding: 0px 16px;
+    margin: 4px 0px 0px;
+}
+.far{
+    font-size: 2rem;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+/* .u-actions-li {
+    height: 40px;
+    width: 40px;
+    padding-right: 4px;
+    height: 24px;
+    border: 0px;
+    background: 0;
+    padding-right: 8px;
+    /* padding-right: 0; 
+} */
+.liked {
+    margin: 0px 0px 8px;
+    padding: 0px 16px;
+    font-size: 1.4rem;
+}
+.liked-count {
+    font-size: 1.4rem;
+}
+.likes {
+    font-weight: 650;
+    text-decoration: none;
+    color: #262626;
+    font-size: 1.4rem;
+}
+.others {
+    font-weight: 650;
+    text-decoration: none;
+    color: #262626;
+    border: 0px;
+    background: 0;
+    font-size: 1.4rem;
+}
+.upload-caption {
+    padding: 0px 16px;
+    margin-bottom: 4px;
+}
+
+.post {
+    font-size: 1.4rem;
+}
+
+.post-link {
+    font-size: 1.4rem;
+    color: #262626;
+}
+.comments {
+    display: block;
+    padding: 0px 16px;
+    margin-bottom: 6px;
+}
+.time-stamp {
+    margin-left: 4px;
+    opacity: 0.7;
+}
+.submit {
+    border-top: 1px solid #efefef;
+    color: #999;
+    font-size: 14px;
+    line-height: 18px;
+    justify-content: center;
+    margin-top: 4px;
+    /* display: none; */
+}
+
+/* Aside section pc screen alone */
+
+.aside-section {
+    display: flex;
+    flex-direction: column;
+    height: 850px;
+    padding-left: 1%;
+    /* padding: 0; */
+    right: 0;
+    width: 30%;
+}
+.aside3 {
+    margin-top: 2%;
+    width: 80%;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    height: 220px;
+}
+.aside3-t {
+    padding: 5px;
+}
+
+.aside2-top1 {
+    width: 70%;
+    padding: 2%;
+    color: #3b3b3b;
+    font-size: 1.2rem;
+}
+.tp3 {
+    width: 70%;
+}
+
+.st {
+    margin-top: 4px;
+    margin-left: 2%;
+    height: 50px;
+    width: 100%;
+    padding-top: 4px;
+}
+.suggestions {
+    display: flex;
+    padding: 3px;
+}
+.sugg-pix {
+    margin-top: 5px;
+    height: 40px;
+    width: 40px;
+    padding-right: 5px;
+}
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+.profile-link {
+    padding: 5%; 
+    margin-left: 2%;
+    font-weight: 500;
+
+}
+
+.profile-link a {
+
+    text-decoration: none;
+    color: #262626;
+    font-size: 1.5rem;
+}
+.follow {
+    height: 50px;
+    width: 50px;
+    align-content: flex-end;
+}
+.follow {
+    position: relative;
+    justify-content: center;
+    top: 40%;
+    left: 35%;
+    border: hidden;
+    background: white;
+}
+
+.follow a {
+    text-decoration: none;
+
+}
+.ff {
+    font-size: 1.2rem;
+    color: rgb(40, 94, 212);
+}
+
+@media (max-width: 1024px) {
+
+    .top {
+        height: 54px;
+        padding: 0 10px;
+    }
+
+    .aside2-top2 {
+        width: 20%;
+    }
+
+    .aside2-top2 a {
+        font-size: .8rem;
+    }
+
+    .follow {
+        left: 15%;
+    }
+
+    .push3 {
+        padding-left: -50px
+    }
+}
+
+
+/* tab Screen */
+
+@media (max-width: 768px) { 
+    .top {
+        height: 54px;
+        padding: 0 20px;
+        position: sticky;
+    }
+
+    .statuses {
+        height: 120px;
+        outline: 0;
+        justify-content: space-between;
+        margin-left: 13.5%;
+        border: 1px solid #dbdbdb;
+        display: block;
+        padding: 10px;
+        overflow-y: hidden;
+        width: 600px;
+        overflow: auto hidden;
+        border-radius: 3px;
+        margin-bottom: 24px;
+    }
+
+    .section {
+        justify-content: space-between;
+        margin-left: 13.5%;
+        background: #fff;
+        width: 600px;
+        height: 700px;
+        border-radius: 4px;
+    }
+
+    .aside-section {
+        display: none;
+    }
+
+    .main {
+        height: 2400px;
+    }
+
+    .push2 {
+        padding-top: 40%;
+    }
+
+}
+
+
+
+
+/* Phone Screen */
+
+@media (max-width: 414px) {
+    .search-box, .sb{
+        display: none;
+    }
+    /* .statuses {
+        padding-top: 10%;
+    } */
+    .main {
+        height: 2200px;
+    }
+    .top {
+        height: 54px;
+        padding: 0 20px;
+        max-width: 411px;
+        position: sticky;
+    }
+    .top-items {
+        width: 100%;
+    }
+    .acct-actions {
+        left: 50%;
+    }
+   .actions {
+        width: 185px;
+   }
+   .statuses {
+    margin: 0;
+    width: auto;
+    border: 0;
+    border-bottom: 1px solid #dbdbdb;
+    padding-left: 0;
+}
+
+.section {
+    margin: 0;
+    background: #fafafa;
+    width: 100%;
+}
+
+
+.top-section {
+    background: #fafafa;
+}
+
+.section2 {
+    margin-top: 50px;
+}
+.comment {
+    display: none;
+}
+
+.submit {
+    display: none;
+}
+
+.upload-caption {
+    width: 90%;
+    margin-left: 4%;
+}
+
+
+.u-actions-li {
+    padding-right: 0;
+}
+
+.like {
+    margin-top: -15px;
+}
+.push2 {
+    padding-left: 50px;
+}
+
+}

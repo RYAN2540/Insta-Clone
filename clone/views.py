@@ -17,11 +17,12 @@ def home(request):
     print(images[0].comments)
     return render(request, 'home.html', {"images": images, "comments": comments, "title": title})
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     title = "Profile"
     current_user = request.user
-    profile = Profile.objects.get(user =current_user)
-    images = Image.get_profile_images(current_user)
+    profile = Profile.search_user(request.user)
+    images = Image.get_profile_images(request.user)
     posts = images.count()
     print(posts)
     return render(request, 'profile/profile.html', {"profile" : profile, "images":images, "posts": posts, "title": title})

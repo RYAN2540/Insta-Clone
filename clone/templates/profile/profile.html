@@ -2,19 +2,24 @@
 {% load static %}
 {% block content %}
 <main id="profile">
-
+    {% for prof in profile %}
     <header>
         <!--  Right col  -->
         <div class="col-left">
+            {% if prof.profile_pic %}
             <img class="user-img"
-                src="  http://res.cloudinary.com/paperhat7/image/upload/v1506621982/instagram-clone/natgeo-logo.jpg "
-                alt="">
+                style="width:200px; height:200px;object-fit: cover; margin-right: 10px; border-radius: 50%; "
+                src="{{prof.profile_pic.url}}" alt="">
+            {% else %}
+            <img class="user-img" style="width:200px; height:200px;object-fit: cover;border-radius: 50%;"
+                src="/static/images/user.png" alt="">
+            {% endif %}
         </div>
         <!-- Left Col  -->
         <div class="col-right">
-            {% for prof in profile %}
+
             <h1>{{prof.username}}</h1>
-            {% endfor %}
+
             <button>Follow</button>
         </div>
     </header>
@@ -55,14 +60,8 @@
         <div>
             <img src="http://res.cloudinary.com/paperhat7/image/upload/v1506619373/instagram-clone/natgeo-04.jpg
   " alt="">
-
-
-
-
-
-
-
     </section>
+    {% endfor %}
 </main>
 <footer>
     <div class="container">

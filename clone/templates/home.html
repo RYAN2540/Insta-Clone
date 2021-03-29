@@ -5,7 +5,7 @@
     {% for image in images %}
     <div class="section">
         <div class="top-section">
-            <div class="section-title">
+            <div class="d-flex">
                 <div class="profile-pic">
                     <a href="#">
                         <img class="picture"
@@ -26,37 +26,12 @@
             </div>
         </div>
         <div class="upload">
-            <img class="upload-content" 
-            src="{{image.image.url}}">
+            <img class="upload-content" src="{{image.image.url}}">
         </div>
         <div class="upload-actions">
-            <button class="u-actions-li">
-                <a href="#">
-                    <img height="28px"
-                        src="https://www.pinclipart.com/picdir/big/33-337369_heart-shaped-clipart-instagram-heart-sign-icon-transparent.png"
-                        alt="">
-                </a>
-            </button>
-            <button class="u-actions-li">
-                <a href="#">
-                    <img height="28px"
-                        src="https://cdn0.iconfinder.com/data/icons/instagram-ui-1/24/Instagram-UI_comment-512.png"
-                        alt="">
-                </a>
-            </button class="u-actions-li">
-            <button class="u-actions-li">
-                <a href="#">
-                    <img height="28px" src="https://qph.fs.quoracdn.net/main-qimg-094b6418c35690a0a9425642728f081b"
-                        alt="">
-                </a>
-            </button>
-            <button class="u-actions-li aside-tag">
-                <a href="#">
-                    <img class="tag" height="28px"
-                        src="https://cdn.clipart.email/51d663379c2127f9240f6b677bce03a2_flag-instagram-interface-save-tag-icon_512-512.png"
-                        alt="">
-                </a>
-            </button>
+            <i class="far fa-heart"></i>
+            <i class="far fa-comment"></i>
+            <i class="far fa-paper-plane"></i>
         </div>
         <div class="liked">
             <p class="liked-count">
@@ -71,24 +46,24 @@
                 </span>
             </span>
         </div>
-        <div class="upload-caption comments liked">
-            <a class="likes comment" href="#">View all <span>{{comment_count}</span> comments</a>
-        </div>
+        <!-- <div class="upload-caption comments liked">
+            <a class="likes comment" href="#">View all comments</a>
+        </div> -->
         {% for comment in comments %}
         {% if comment.image.id == image.id %}
         <div class="upload-caption comments">
             <span class="post">
                 <a href="#" class="likes">{{comment.user}}</a>
                 <span class="post-link">{{comment.content}}</span>
-                <span class="post-link">
-                    <button class="u-actions-li  like">
+                <!-- span class="post-link">
+                    <button class="u-actions-li  like" class="float-right">
                         <a href="#" class="push2">
                             <img height="12px"
                                 src="https://www.pinclipart.com/picdir/big/33-337369_heart-shaped-clipart-instagram-heart-sign-icon-transparent.png"
                                 alt="">
                         </a>
                     </button>
-                </span>
+                </span -->
             </span>
         </div>
         {% endif %}
@@ -112,40 +87,11 @@
     {% endfor %}
     <!-- Aside section- Pc screen alone -->
     <div class="aside-section">
-
-        <div class="aside1">
-
-            <div class="user-profile">
-                <div class="own-profile-pic">
-
-                    <a href="#">
-                        <img class="own-picture"
-                            src="https://pbs.twimg.com/profile_images/1017823687804882944/YMzUeY9d_400x400.jpg"
-                            alt="user">
-                    </a>
-
-                </div>
-
-                <div class="user">
-
-                    <a href="#" class="own-account">
-                        <span class="identity">
-                            {{user.username}}
-                        </span>
-                    </a>
-
-                </div>
-            </div>
-
-        </div>
         <div class="aside3">
             <div class="aside3-t">
                 <div class="aside2-top">
                     <div class="aside2-top1 tp3">
                         Suggestions For All
-                    </div>
-                    <div class="aside2-top2">
-                        <a href="#">See All</a>
                     </div>
                 </div>
                 <div class="aside3-body">
@@ -179,66 +125,11 @@
                             </button>
 
                         </div>
-                        <div class="suggestions">
-
-                            <div class="sugg-pix">
-
-                                <a href="#">
-                                    <img class="picture"
-                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png"
-                                        alt="user">
-                                </a>
-
-                            </div>
-
-                            <div class="profile-info">
-
-                                <span class="profile-link s-link">
-                                    <a href="#">officiallee</a>
-                                </span>
-
-                                <span class="time-stamp">
-                                    New to Instagram
-                                </span>
-                            </div>
-
-
-                            <button class="follow">
-                                <a href="#" class="ff">Follow</a>
-                            </button>
-
-                        </div>
-                        <div class="suggestions">
-
-                            <div class="sugg-pix">
-
-                                <a href="#">
-                                    <img class="picture"
-                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png"
-                                        alt="user">
-                                </a>
-
-                            </div>
-
-                            <div class="profile-info">
-
-                                <span class="profile-link s-link">
-                                    <a href="#">officiallee</a>
-                                </span>
-
-                                <span class="time-stamp">
-                                    New to Instagram
-                                </span>
-                            </div>
-
-                            <button class="follow">
-                                <a href="#" class="ff">Follow</a>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

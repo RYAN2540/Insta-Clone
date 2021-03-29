@@ -1,4 +1,4 @@
-<div class="top">
+<!-- <div class="top">
     <div class="top-items">
         <div class="logo-area">
             <a href="{% url 'home' %}"><img
@@ -15,17 +15,9 @@
     </form>
     <div class="acct-actions">
         <div class="actions">
+            <a href="/"><span class="glyphicon glyphicon-home"></span></a>
             <a href="/logout" class="li">
                 <img height="24px" src="https://static.thenounproject.com/png/17705-200.png" alt="explore">
-            </a>
-            <a href="{% url 'profile' %}" class="li">
-                <img height="24px" src="https://cdn.iconscout.com/icon/free/png-512/explore-1781524-1513844.png"
-                    alt="explore">
-            </a>
-            <a href="{% url 'upload_image' %}" class="li">
-                <img height="24px"
-                    src="https://www.pinclipart.com/picdir/big/33-337369_heart-shaped-clipart-instagram-heart-sign-icon-transparent.png"
-                    alt="love">
             </a>
             <a href="#" class="li" data-toggle="modal" data-target="#exampleModal">
                 <img height="24px" src="https://pbs.twimg.com/profile_images/1017823687804882944/YMzUeY9d_400x400.jpg"
@@ -34,11 +26,34 @@
         </div>
     </div>
 </div>
+</div> -->
+<div class="navigation">
+    <div class="logo">
+        <a href="{% url 'home' %}"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
+                alt="logo" width="103"></a>
+    </div>
+    <form role="search" class="navbar-form" action="{% url 'search' %}">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="user">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+    </form>
+
+    <div class="nav-icons">
+        <a href="/"><span class="glyphicon glyphicon-home"></span></a>
+        <a href="#" data-toggle="modal" data-target="#exampleModal">
+            <i class="fas fa-user"></i>
+        </a>
+    </div>
+
+</div>
 </div>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Launch demo modal
 </button>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
