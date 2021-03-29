@@ -26,7 +26,8 @@
             </div>
         </div>
         <div class="upload">
-            <img class="upload-content" src="{{image.image.url}}">
+            <img class="upload-content" 
+            src="{{image.image.url}}">
         </div>
         <div class="upload-actions">
             <button class="u-actions-li">
@@ -71,14 +72,14 @@
             </span>
         </div>
         <div class="upload-caption comments liked">
-            <a class="likes comment" href="#">View all <span>58</span> comments</a>
+            <a class="likes comment" href="#">View all <span>{{comment_count}</span> comments</a>
         </div>
+        {% for comment in comments %}
+        {% if comment.image.id == image.id %}
         <div class="upload-caption comments">
             <span class="post">
-                <a href="#" class="likes">justified_kay</a>
-                <span class="post-link">
-                    Yesterday was awesome! It's a year of movement!
-                </span>
+                <a href="#" class="likes">{{comment.user}}</a>
+                <span class="post-link">{{comment.content}}</span>
                 <span class="post-link">
                     <button class="u-actions-li  like">
                         <a href="#" class="push2">
@@ -90,32 +91,17 @@
                 </span>
             </span>
         </div>
-        <div class="upload-caption comments">
-            <span class="post">
-                <a href="#" class="likes">_ginnie</a>
-                <span class="post-link">
-                    It was a great experience.
-                </span>
-                <span class="post-link">
-                    <button class="u-actions-li  like">
-                        <a href="#" class="push">
-                            <img height="12px"
-                                src="https://www.pinclipart.com/picdir/big/33-337369_heart-shaped-clipart-instagram-heart-sign-icon-transparent.png"
-                                alt="">
-                        </a>
-                    </button>
-                </span>
-            </span>
-        </div>
+        {% endif %}
+        {% endfor %}
         <div class="time-stamp liked">{{image.post_date | timesince }} ago</div>
         <div class="submit">
             <div class="">
                 <form role="add_comment" , action="{% url 'comment' image_id=image.id %}">
                     {% csrf_token%}
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Comment" name="comment">
+                        <input type="text" class="form-control" placeholder="Add a comment" name="comment">
                         <div class="input-group-btn">
-                            <button class="btn btn-dark" type="submit"> Post</button>
+                            <button class="btn" type="submit"> Post</button>
 
                         </div>
                     </div>

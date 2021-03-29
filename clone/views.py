@@ -10,6 +10,11 @@ def home(request):
     title= "Instagram"
     images = Image.objects.all()
     comments = Comment.objects.all()
+    comments_count= comments.count()
+    print(comments[0].image.id)
+    print(comments[1].image)
+    print(images[0].id)
+    print(images[0].comments)
     return render(request, 'home.html', {"images": images, "comments": comments, "title": title})
 
 def profile(request):
@@ -23,6 +28,7 @@ def profile(request):
 
 @login_required(login_url='/accounts/login/')
 def upload_image(request):
+    title = "Instagram | Upload image"
     if request.method == "POST":
         form = UploadImageForm(request.POST, request.FILES)
         if form.is_valid():
