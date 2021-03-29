@@ -149,6 +149,11 @@ footer .container {
     }
 }
 
+main {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
 @media screen and (max-width: 400px) {
     aside .col {
         width: 100%;

@@ -48,7 +48,7 @@ class Profile(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    pub_date = models.DateTimeField(auto_now_add=True)
+    post_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ForeignKey(Image, on_delete= models.CASCADE, related_name = "comments")
 
@@ -64,3 +64,6 @@ class Comment(models.Model):
     @classmethod
     def get_image_comments(cls,image):
         return cls.objects.filter(image =image)
+
+    class Meta:
+        ordering = ['-post_date']
