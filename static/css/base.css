@@ -6,6 +6,15 @@
     font-family: 'Roboto', sans-serif;
     font-size: 10px;
 }
+modal {
+    position: fixed;
+    right: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
 *,
 *::before,
 *::after{

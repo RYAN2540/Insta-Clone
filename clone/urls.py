@@ -7,5 +7,5 @@ urlpatterns=[
     url(r'^upload/image$', views.upload_image, name = "upload_image"),
     url(r'^search/',views.search,name ='search'),
     url(r'^comment/(?P<image_id>\d+)', views.comment,name = "comment"),
-    url(r'^profile/edit$', views.edit_profile,name = 'edit_profile'),
+    url(r'^profile/edit$', views.profile_edit,name = 'profile_edit'),
 ]

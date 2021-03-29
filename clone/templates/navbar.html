@@ -2,36 +2,61 @@
     <div class="top-items">
         <div class="logo-area">
             <a href="{% url 'home' %}"><img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
-                alt="logo" width="103"></div></a>
-</div>
-
-<form class="navbar-form" role="search" , action="{% url 'search' %}">
-    <div class="search-box sb">
-        <input type="text" class="search" placeholder="search" name="user">
-        <span class="ic"><img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png"
-                alt="search" height="10px"></span>
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
+                    alt="logo" width="103"></div></a>
     </div>
-</form>
-<div class="acct-actions">
-    <div class="actions">
-        <a href="/logout" class="li">
-            <img height="24px" src="https://static.thenounproject.com/png/17705-200.png" alt="explore">
-        </a>
-        <a href="{% url 'profile' %}" class="li">
-            <img height="24px" src="https://cdn.iconscout.com/icon/free/png-512/explore-1781524-1513844.png"
-                alt="explore">
-        </a>
-        <a href="{% url 'upload_image' %}" class="li">
-            <img height="24px"
-                src="https://www.pinclipart.com/picdir/big/33-337369_heart-shaped-clipart-instagram-heart-sign-icon-transparent.png"
-                alt="love">
-        </a>
-        <a href="#" class="li">
-            <img height="24px" src="https://pbs.twimg.com/profile_images/1017823687804882944/YMzUeY9d_400x400.jpg"
-                alt="user" style="border-radius: 50%">
-        </a>
+
+    <form class="navbar-form" role="search" , action="{% url 'search' %}">
+        <div class="search-box sb">
+            <input type="text" class="search" placeholder="search" name="user">
+            <span class="ic"><img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png"
+                    alt="search" height="10px"></span>
+        </div>
+    </form>
+    <div class="acct-actions">
+        <div class="actions">
+            <a href="/logout" class="li">
+                <img height="24px" src="https://static.thenounproject.com/png/17705-200.png" alt="explore">
+            </a>
+            <a href="{% url 'profile' %}" class="li">
+                <img height="24px" src="https://cdn.iconscout.com/icon/free/png-512/explore-1781524-1513844.png"
+                    alt="explore">
+            </a>
+            <a href="{% url 'upload_image' %}" class="li">
+                <img height="24px"
+                    src="https://www.pinclipart.com/picdir/big/33-337369_heart-shaped-clipart-instagram-heart-sign-icon-transparent.png"
+                    alt="love">
+            </a>
+            <a href="#" class="li" data-toggle="modal" data-target="#exampleModal">
+                <img height="24px" src="https://pbs.twimg.com/profile_images/1017823687804882944/YMzUeY9d_400x400.jpg"
+                    alt="user" style="border-radius: 50%">
+            </a>
         </div>
     </div>
 </div>
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>

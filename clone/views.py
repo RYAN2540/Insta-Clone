@@ -58,7 +58,7 @@ def comment(request, image_id):
 
     return redirect('home')
 
-def edit_profile(request):
+def profile_edit(request):
     current_user = request.user
     if request.method == "POST":
         form = EditBioForm(request.POST, request.FILES)
