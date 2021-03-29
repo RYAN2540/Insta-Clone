@@ -12,7 +12,9 @@
         </div>
         <!-- Left Col  -->
         <div class="col-right">
-            <h1>natgeo</h1>
+            {% for prof in profile %}
+            <h1>{{prof.username}}</h1>
+            {% endfor %}
             <button>Follow</button>
         </div>
     </header>
@@ -25,7 +27,7 @@
 
     <aside>
         <div class='col-stats'>
-            <strong>444</strong>
+            <strong>{{posts}}</strong>
             <br />
             posts
         </div>
@@ -53,7 +55,7 @@
         <div>
             <img src="http://res.cloudinary.com/paperhat7/image/upload/v1506619373/instagram-clone/natgeo-04.jpg
   " alt="">
-           
+
 
 
 

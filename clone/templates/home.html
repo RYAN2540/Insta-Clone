@@ -245,11 +245,11 @@
         <div class="time-stamp liked">18 HOURS AGO</div>
         <div class="submit">
             <div class="">
-                <form class="ssub" method="POST">
-                    <input type="text" placeholder="Add a comment…" class="texta">
-
-                    </input>
-                    <button class="button u-actions-li">Post</button>
+                {% for image in images %}
+                <form class="ssub" role="add_comment" , action="{% url 'comment' image_id=image.id %}">
+                    {% csrf_token%}
+                    <input type="text" placeholder="Comment" name="comment" class="texta">
+                    <button class="button u-actions-li" type="submit">Post</button>
                 </form>
             </div>
         </div>
@@ -397,7 +397,7 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
 
             </div>

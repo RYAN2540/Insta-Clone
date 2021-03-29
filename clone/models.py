@@ -2,7 +2,6 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 
-# Create your models here.
 class Image(models.Model):
     image = CloudinaryField('image')
     name = models.CharField(max_length = 30)
@@ -44,7 +43,7 @@ class Profile(models.Model):
 
     @classmethod
     def search_user(cls,username): 
-        return User.objects.filter(username__icontains = username)
+        return User.objects.filter(username = username)
 
 class Comment(models.Model):
     content = models.TextField()

@@ -1,15 +1,18 @@
 <div class="top">
     <div class="top-items">
         <div class="logo-area">
-            <a href="#"><img
+            <a href="{% url 'home' %}"><img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
                 alt="logo" width="103"></div></a>
 </div>
-<div class="search-box sb">
-    <input type="text" class="search" placeholder="search">
-    <span class="ic"><img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png" alt="search"
-            height="10px"></span>
-</div>
+
+<form class="navbar-form" role="search" , action="{% url 'search' %}">
+    <div class="search-box sb">
+        <input type="text" class="search" placeholder="search" name="user">
+        <span class="ic"><img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png"
+                alt="search" height="10px"></span>
+    </div>
+</form>
 <div class="acct-actions">
     <div class="actions">
         <a href="/logout" class="li">
