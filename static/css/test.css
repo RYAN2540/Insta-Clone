@@ -23,7 +23,24 @@
 .nav-icons .glyphicon, .nav-icons .fas{
     font-size: 2.5rem;
 }
-
+.modal {
+    position: fixed;
+    top: 10%;
+    left: auto !important;
+}
+.modal-header {
+    padding: 0px 15px;
+    border-bottom: 0px;
+}
+.modal-body ul li a{
+    font-size: 1.2rem;
+}
+ul {
+    list-style-type: none;
+}
+li{
+    padding-bottom: 2rem;
+}
 /*images*/
 .main {
     margin-top: 7%;
