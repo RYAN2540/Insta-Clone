@@ -24,16 +24,38 @@ def create_profile(request):
 @login_required(login_url='/accounts/login/')
 def home(request):
     title= "Instagram"
-    images = Image.objects.all()
-    for i in images:
+    current_user =request.user
+    try:
+        logged_in = Profile.objects.get(user = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+
+    timeline_images = []
+    current_images = Image.objects.filter(profile = logged_in)
+    for current_image in current_images:
+        timeline_images.append(current_image.id)
+
+    current_following = Follow.objects.filter(follower = logged_in)
+    for following in current_following:
+        following_profile = following.followed
+        following_images = Image.get_profile_images(following_profile)
+        for image in following_images:
+            timeline_images.append(image.id)
+
+    display_images= Image.objects.filter(pk__in = timeline_images).order_by('-post_date')
+    liked = False
+    for i in display_images:
         image = Image.objects.get(pk=i.id)
         liked = False
         if image.likes.filter(id =request.user.id).exists():
             liked = True
     comments = Comment.objects.all()
     comments_count= comments.count()
-    print("likes")
-    return render(request, 'home.html', {"images": images,"liked" : liked, "comments": comments, "title": title})
+    
+    suggestions = Profile.objects.all()[:4]
+    print("IMAGES")
+    print(len(display_images))
+    return render(request, 'home.html', {"images": display_images,"liked" : liked, "comments": comments, "title": title, "suggestions": suggestions})
 
 @login_required(login_url='/accounts/login/')
 def profile(request, profile_id):
@@ -47,7 +69,7 @@ def profile(request, profile_id):
     # user_id=request.user.id
     # profile = Profile.objects.get(id = prof_id)
     # profile = Profile.search_user(username)
-    # print("current user")
+    # print("logged_in user")
     # print(profile[0].username)
     try:
         # profile = User.objects.filter(id = profile_id)
@@ -123,11 +145,16 @@ def profile(request, profile_id):
 @login_required(login_url='/accounts/login/')
 def upload_image(request):
     title = "Instagram | Upload image"
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(user = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
     if request.method == "POST":
         form = UploadImageForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.save(commit=False)
-            image.profile = request.user
+            image.profile = profile
             image.save()
         return redirect('home')
     else:
@@ -161,30 +188,17 @@ def comment(request, image_id):
 def like_image(request,image_id):
     image = Image.objects.get(pk=image_id)
     liked = False
-    #likers[]
-
-    if image.likes.filter(id=request.user.id).exists():
-        image.likes.remove(request.user)
-        # print("IMAGE DISLIKES")
-        # print(image.likes)
-        # if request.user.username in likers:
-        #     likers.remove(request.user.username)
-        liker="None"
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(user = current_user)
+    except Profile.DoesNotExist:
+        raise Http404()
+    if image.likes.filter(id=profile.id).exists():
+        image.likes.remove(profile)
         liked = False
     else:
-        image.likes.add(request.user)
+        image.likes.add(profile)
         liked = True
-        liker= request.user.username 
-        # print("IMAGE LIKES")
-        # print(image.likes)
-
-        # print(liker)
-        # likers.append(liker)
-    # if len(likers) >= 1:
-    #     print("LIKERS")
-    #     print(likers[-1])
-    #     liker = likers[-1]
-    # return render(request,'home.html', {"liker":liker})
     return HttpResponseRedirect(reverse('home'))
 
 def profile_edit(request):

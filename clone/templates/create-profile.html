@@ -5,7 +5,7 @@
 <div id="wrapper" id="content">
     <div class="register">
         <div class="form-data">
-            <form action="/accounts/register/" method="post">
+            <form  action="{%url 'create_profile'%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="logo">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
@@ -23,6 +23,7 @@
                 </div>
             </div>
         </div>
+        <a href="/logout">LOgout</a>
     </div>
     <footer>
         <div class="container">

@@ -141,16 +141,7 @@ li{
 .btn{
     background-color: transparent;
 }
-/* .u-actions-li {
-    height: 40px;
-    width: 40px;
-    padding-right: 4px;
-    height: 24px;
-    border: 0px;
-    background: 0;
-    padding-right: 8px;
-    /* padding-right: 0; 
-} */
+
 .liked {
     margin: 0px 0px 8px;
     padding: 0px 16px;
@@ -169,9 +160,12 @@ li{
     padding: 0px 16px;
     margin-bottom: 4px;
 }
-
-.post {
+.post{
+    font-size: 1.4rem; 
+}
+.comment-post {
     font-size: 1.4rem;
+    padding-left: 4%;
 }
 
 .post-link {

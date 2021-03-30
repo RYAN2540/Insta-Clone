@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="main">
+    {% if images %}
     {% for image in images %}
     <div class="section">
         <div class="top-section">
@@ -17,13 +18,6 @@
                     <a href="#" class="profile_tag">{{image.profile}}</a>
                 </div>
             </div>
-            <div class="opt">
-                <a href="#" class="options">
-                    <div class="op"></div>
-                    <div class="op"></div>
-                    <div class="op"></div>
-                </a>
-            </div>
         </div>
         <div class="upload">
             <img class="upload-content" src="{{image.image.url}}">
@@ -33,7 +27,6 @@
                 {% csrf_token %}
                 <button type="submit" name="image_id" value={{image.id}} style="border: 0px; background-color: transparent; padding-top: 25%; padding-right: 80%;"><i class="far fa-heart"></i></button>
             </form>
-            <i class=" far fa-comment"></i>
         </div>
         <div class="liked">
             <p class="liked-count">{{image.likes.count}} likes</p>
@@ -46,10 +39,13 @@
                 </span>
             </span>
         </div>
+        <div class="comments">
+            <p class="text-muted" style="font-size: 1.4rem;">Comments...</p>
+        </div>
         {% for comment in comments %}
         {% if comment.image.id == image.id %}
         <div class="upload-caption comments">
-            <span class="post">
+            <span class="comment-post">
                 <a href="#" class="likes">{{comment.user}}</a>
                 <span class="post-link">{{comment.content}}</span>
             </span>
@@ -58,66 +54,57 @@
         {% endfor %}
         <div class="time-stamp liked">{{image.post_date | timesince }} ago</div>
         <div class="submit">
-            <div class="">
+            <div id="comment">
                 <form role="add_comment" , action="{% url 'comment' image_id=image.id %}">
                     {% csrf_token%}
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Add a comment" name="comment">
                         <div class="input-group-btn">
                             <button class="btn" type="submit"> Post</button>
-
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    {% empty %}
+    <div class="nothing">
+        <h2>Nothing to see</h2>
+        <h2>Get started on Instagram by following an Instagram user or share an image to see images on the timeline.</h2>
+    </div>
     {% endfor %}
+    {% endif %}
     <!-- Aside section- Pc screen alone -->
+    {% for prof in suggested_profiles %}
+    {% if prof.user.username == request.user.username%}
+    {% else %}
     <div class="aside-section">
         <div class="aside3">
             <div class="aside3-t">
                 <div class="aside2-top">
                     <div class="aside2-top1 tp3">
-                        Suggestions For All
+                        Suggestions
                     </div>
                 </div>
                 <div class="aside3-body">
                     <div class="st">
                         <div class="suggestions">
-
                             <div class="sugg-pix">
-
-                                <a href="#">
-                                    <img class="picture"
-                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png"
-                                        alt="user">
-                                </a>
-
+                                <a href="/profile/{{prof.id}}"><img src="{{prof.profile_pic.url}}" alt="avatar" class="picture"></a>
                             </div>
-
                             <div class="profile-info">
-
                                 <span class="profile-link s-link">
-                                    <a href="#">officiallee</a>
-                                </span>
-
-                                <span class="time-stamp">
-                                    New to Instagram
+                                    <a href="/profile/{{prof.id}}">{{prof.user.username}}</a>
                                 </span>
                             </div>
-
-
-                            <button class="follow">
-                                <a href="#" class="ff">Follow</a>
-                            </button>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endif %}
+    {% endfor %}
 </div>
 </div>
 {% endblock %}

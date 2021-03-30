@@ -137,7 +137,7 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = "/accounts/login/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/create_profile"
 
 REGISTRATION_OPEN= True
 ACCOUNT_ACTIVATION_DAYS = 7
