@@ -2,9 +2,24 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Image, Profile, Comment, Follow
-from .forms import UploadImageForm, EditBioForm, FollowForm, UnfollowForm
+from .forms import CreateProfileForm,UploadImageForm, EditBioForm, FollowForm, UnfollowForm
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
+
+@login_required(login_url='/accounts/login/')
+def create_profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = CreateProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return redirect(home)
+
+    else:
+        form = CreateProfileForm()
+    return render(request, 'create-profile.html', {"form": form})
 
 @login_required(login_url='/accounts/login/')
 def home(request):
