@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load bootstrap3 %}
 {% load static %}
 {% block content %}
 <main id="profile">
@@ -19,14 +20,30 @@
         <div class="col-right">
 
             <h1>{{prof.username}}</h1>
+            {% if follow_form %}
+            <form action="/profile/{{profile.id}}" method="post">
+                {%csrf_token%}
 
+                {% bootstrap_form follow_form%}
+                <input type="submit" class="btn btn-primary" name="follow" value="Follow">
+            </form>
+            {% endif %}
+            {% if unfollow_form %}
+            <form action="/profile/{{profile.id}}" method="post">
+                {%csrf_token%}
+
+                {% bootstrap_form unfollow_form%}
+                <input type="submit" class="btn btn-danger" name="unfollow" value="Unfollow">
+            </form>
+            {% endif %}
             <button>Follow</button>
         </div>
     </header>
 
     <article>
         <p><strong>National Geographic</strong> Experience the world through the eyes of National Geographic
-            photographers. www.natgeo.com/photography
+            photographers.
+            www.natgeo.com/photography
         </p>
     </article>
 

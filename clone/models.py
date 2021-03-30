@@ -9,8 +9,7 @@ class Image(models.Model):
     post_date = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name="posts")
-    followers = models.IntegerField(default=0)
-    following = models.IntegerField(default=0)
+    
 
     def __str__(self):
         return self.name
@@ -39,6 +38,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     profile_pic = CloudinaryField('image')
     bio =  models.TextField(blank=True)
+    followers = models.IntegerField(default=0)
+    following = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
@@ -46,6 +47,7 @@ class Profile(models.Model):
     @classmethod
     def search_user(cls,username): 
         return User.objects.filter(username = username)
+
 
 class Comment(models.Model):
     content = models.TextField()

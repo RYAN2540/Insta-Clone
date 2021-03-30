@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import Image, Profile, Comment
+from .models import Image, Profile, Comment, Follow
 from .forms import UploadImageForm, EditBioForm, FollowForm, UnfollowForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 
 @login_required(login_url='/accounts/login/')
@@ -18,20 +18,32 @@ def home(request):
     comments = Comment.objects.all()
     comments_count= comments.count()
     print("likes")
-    x=images[0].likes
-    print(x)
     return render(request, 'home.html', {"images": images,"liked" : liked, "comments": comments, "title": title})
 
 @login_required(login_url='/accounts/login/')
 def profile(request, profile_id):
     title = "Profile"
     current_user = request.user
+    prof_id = current_user.id - 1
+    pr_id= int(profile_id) - 1
+    username = current_user.username
+    print(pr_id)
+    # user = User.objects.filter(username=username)
+    # user_id=request.user.id
+    # profile = Profile.objects.get(id = prof_id)
+    # profile = Profile.search_user(username)
+    # print("current user")
+    # print(profile[0].username)
     try:
-        profile = Profile.objects.get(id = profile_id)
+        # profile = User.objects.filter(id = profile_id)
+        # profile = Profile.search_user(username)
+        profile = Profile.objects.get(user =current_user)
+        print("followers")
+        print(profile[0].following)
     except Profile.DoesNotExist:
         raise Http404()
     try:
-        profile_following = Profile.objects.get(profile = current_user)
+        profile_following = Profile.objects.get(user = current_user)
     except Profile.DoesNotExist:
         raise Http404()
     try:
@@ -91,6 +103,7 @@ def profile(request, profile_id):
         return render(request, 'profile/profile.html', {"profile": profile, "images": images, "comments":comments, "unfollow_form": form_unfollow, "posts": posts, "title": title})
 
     return render(request, 'profile/profile.html', {"profile": profile, "images": images, "comments":comments, "follow_form": form_follow, "posts": posts, "title": title})
+    # return render(request, 'profile/profile.html')
 
 @login_required(login_url='/accounts/login/')
 def upload_image(request):
