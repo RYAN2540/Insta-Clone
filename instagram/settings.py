@@ -52,6 +52,7 @@ cloudinary.config(
   cloud_name = config('CLOUD_NAME'),
   api_key = config('API_KEY'),
   api_secret = config('API_SECRET'),
+  cloudinary_url = config('CLOUDINARY_URL'),
 )
 
 MIDDLEWARE = [
