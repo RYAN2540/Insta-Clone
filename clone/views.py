@@ -3,19 +3,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Image, Profile, Comment
 from .forms import UploadImageForm, EditBioForm
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 @login_required(login_url='/accounts/login/')
 def home(request):
     title= "Instagram"
     images = Image.objects.all()
+    for i in images:
+        image = Image.objects.get(pk=i.id)
+        liked = False
+        if image.likes.filter(id =request.user.id).exists():
+            liked = True
     comments = Comment.objects.all()
     comments_count= comments.count()
-    print(comments[0].image.id)
-    print(comments[1].image)
-    print(images[0].id)
-    print(images[0].comments)
-    return render(request, 'home.html', {"images": images, "comments": comments, "title": title})
+    print("likes")
+    x=images[0].likes
+    print(x)
+    return render(request, 'home.html', {"images": images,"liked" : liked, "comments": comments, "title": title})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -65,16 +70,34 @@ def comment(request, image_id):
 
     return redirect('home')
 
-def like_image(request,id):
-    image = Image.objects.get(pk=id)
+def like_image(request,image_id):
+    image = Image.objects.get(pk=image_id)
     liked = False
+    #likers[]
+
     if image.likes.filter(id=request.user.id).exists():
         image.likes.remove(request.user)
+        # print("IMAGE DISLIKES")
+        # print(image.likes)
+        # if request.user.username in likers:
+        #     likers.remove(request.user.username)
+        liker="None"
         liked = False
     else:
         image.likes.add(request.user)
-        liked = True 
-    return HttpResponseRedirect(reverse('home',args =[int(image.id)]))
+        liked = True
+        liker= request.user.username 
+        # print("IMAGE LIKES")
+        # print(image.likes)
+
+        # print(liker)
+        # likers.append(liker)
+    # if len(likers) >= 1:
+    #     print("LIKERS")
+    #     print(likers[-1])
+    #     liker = likers[-1]
+    # return render(request,'home.html', {"liker":liker})
+    return HttpResponseRedirect(reverse('home'))
 
 def profile_edit(request):
     current_user = request.user

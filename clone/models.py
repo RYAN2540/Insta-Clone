@@ -9,6 +9,8 @@ class Image(models.Model):
     post_date = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name="posts")
+    followers = models.IntegerField(default=0)
+    following = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -66,3 +68,11 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-post_date']
+
+class Follow(models.Model): 
+    posted = models.DateTimeField(auto_now_add=True)
+    followed = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile_followed')
+    follower = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile_following')
+
+    def __str__(self):
+        return self.pk

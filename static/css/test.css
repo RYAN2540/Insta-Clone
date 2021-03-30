@@ -135,9 +135,12 @@ li{
 .far{
     font-size: 2rem;
     margin-right: 2%;
+    /* margin-left: 2%; */
     margin-top: 1%;
 }
-
+.btn{
+    background-color: transparent;
+}
 /* .u-actions-li {
     height: 40px;
     width: 40px;
@@ -160,14 +163,6 @@ li{
     font-weight: 650;
     text-decoration: none;
     color: #262626;
-    font-size: 1.4rem;
-}
-.others {
-    font-weight: 650;
-    text-decoration: none;
-    color: #262626;
-    border: 0px;
-    background: 0;
     font-size: 1.4rem;
 }
 .upload-caption {
