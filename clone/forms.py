@@ -10,3 +10,13 @@ class EditBioForm(ModelForm):
     class Meta:
         model = Profile
         exclude = ['user']
+
+class FollowForm(forms.ModelForm):
+    class Meta:
+        model = Follow
+        exclude = ['followed', 'follower']
+
+class UnfollowForm(forms.ModelForm):
+    class Meta:
+        model = Follow
+        exclude = ['followed', 'follower']

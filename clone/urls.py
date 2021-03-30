@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns=[
     url('^$',views.home,name = 'home'),
-    url(r'^profile/$',views.profile,name = 'profile'),
+    url(r'^profile/(?P<profile_id>\d+)',views.profile,name = 'profile'),
     url(r'^upload/image$', views.upload_image, name = "upload_image"),
     url(r'^search/',views.search,name ='search'),
     url(r'^like/(?P<image_id>\d+)', views.like_image, name = 'like_image'),
