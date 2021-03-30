@@ -3,29 +3,26 @@
 {% load static %}
 {% block content %}
 <main id="profile">
-    {% for prof in profile %}
     <header>
         <!--  Right col  -->
         <div class="col-left">
-            {% if prof.profile_pic %}
+            {% if profile.profile_pic %}
             <img class="user-img"
-                style="width:200px; height:200px;object-fit: cover; margin-right: 10px; border-radius: 50%; "
-                src="{{prof.profile_pic.url}}" alt="">
-            {% else %}
-            <img class="user-img" style="width:200px; height:200px;object-fit: cover;border-radius: 50%;"
-                src="/static/images/user.png" alt="">
+                style="width:15rem; height:15rem;object-fit: cover; margin-right: 10px; border-radius: 50%; "
+                src="{{profile.profile_pic.url}}" alt="">
             {% endif %}
         </div>
         <!-- Left Col  -->
         <div class="col-right">
-
-            <h1>{{prof.username}}</h1>
+            <h3>{{profile.user.username}}</h3>
+            {%if profile.user.username == request.user.username%}
+            {% else%}
             {% if follow_form %}
             <form action="/profile/{{profile.id}}" method="post">
                 {%csrf_token%}
-
                 {% bootstrap_form follow_form%}
-                <input type="submit" class="btn btn-primary" name="follow" value="Follow">
+                <input type="submit" class=" btn btn-primary" name="follow" value="Follow"
+                    style="background-color: #003569 !important; padding: 5px;">
             </form>
             {% endif %}
             {% if unfollow_form %}
@@ -33,20 +30,16 @@
                 {%csrf_token%}
 
                 {% bootstrap_form unfollow_form%}
-                <input type="submit" class="btn btn-danger" name="unfollow" value="Unfollow">
+                <input type="submit" class=" btn btn-info" name="unfollow" value="Unfollow"
+                    style="background-color: #003569 !important; padding: 5px;">
             </form>
             {% endif %}
-            <button>Follow</button>
+            {% endif %}
         </div>
     </header>
-
     <article>
-        <p><strong>National Geographic</strong> Experience the world through the eyes of National Geographic
-            photographers.
-            www.natgeo.com/photography
-        </p>
+        <p>{{profile.bio}}</p>
     </article>
-
     <aside>
         <div class='col-stats'>
             <strong>{{posts}}</strong>
@@ -54,31 +47,26 @@
             posts
         </div>
         <div class='col-stats'>
-            <strong>292</strong>
+            <strong>{{profile.followers}}</strong>
             <br />
             followers
         </div>
         <div class='col-stats'>
-            <strong>8292</strong>
+            <strong>{{profile.following}}</strong>
             <br />
             following
         </div>
     </aside>
+    <div class="row">
+        {% if images %}
+        {% for image in images %}
+        <div class="col-md-4 col-sm-4" style="object-fit: cover;">
+            <img src="{{image.image.url}}" alt="" style="width: 20rem; height: 20rem; object-fit: cover;">
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
 
-    <section>
-        <div>
-            <img src="http://res.cloudinary.com/paperhat7/image/upload/v1506619371/instagram-clone/natgeo-01.jpg
-  " alt="">
-        </div>
-        <div>
-            <img src="  http://res.cloudinary.com/paperhat7/image/upload/v1506619371/instagram-clone/natgeo-02.jpg
-  " alt="">
-        </div>
-        <div>
-            <img src="http://res.cloudinary.com/paperhat7/image/upload/v1506619373/instagram-clone/natgeo-04.jpg
-  " alt="">
-    </section>
-    {% endfor %}
 </main>
 <footer>
     <div class="container">

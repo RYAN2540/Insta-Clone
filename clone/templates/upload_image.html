@@ -3,7 +3,7 @@
 {% load bootstrap3 %}
 {% block content %}}
 <div id="wrapper" id="content">
-    <div class="container">
+    <div class="register">
         <div class="form-data">
             <form action="{%url 'upload_image'%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}

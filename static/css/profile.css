@@ -24,7 +24,7 @@ main {
     margin: 0 auto;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    padding-top: 10rem;
+    padding-top: 2rem;
 }
 
 
@@ -78,18 +78,13 @@ aside strong {
     font-weight: 200;
 }
 
-section {
+/* section .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
-}
-
-section>* {
-    width: 32%;
-    margin-bottom: .5%;
-}
+} */
 
 #profile img {
     width: 100%;
@@ -159,9 +154,5 @@ main {
         width: 100%;
         padding: 10px;
     }
-
-    section>* {
-        width: 100%;
-        padding: 10px
-    }
+    
 }

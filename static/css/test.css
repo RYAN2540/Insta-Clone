@@ -43,7 +43,7 @@ li{
 }
 /*images*/
 .main {
-    margin-top: 7%;
+    margin-top: 3rem;
     width: 100%;
 }
 /* post */
@@ -85,6 +85,7 @@ li{
     height: 34px;
     width: 34px;
     border-radius: 50%;
+    object-fit: cover;
 }
 .profile {
     margin: 10px 15px;
