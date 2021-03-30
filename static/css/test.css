@@ -48,15 +48,15 @@ li{
 }
 /* post */
 .section {
-    justify-content: space-between;
-    margin-left: 13.5%;
+    /* justify-content: space-between;
+    margin-left: 13.5%; */
     background: #fff;
     /* width: 47%; */
     max-width: 47%;
     border-radius: 4px;
-    display: block;
-    float: left;
-    margin-bottom: 60px;
+    /* display: block;
+    float: left; */
+    margin-bottom: 6rem;
 }
 /*post header */
 .top-section {
@@ -195,13 +195,13 @@ li{
 /* Aside section pc screen alone */
 
 .aside-section {
-    display: flex;
-    flex-direction: column;
-    height: 850px;
-    padding-left: 1%;
+    /* display: flex;
+    flex-direction: column; */
+    height: 85rem;
+    /* padding-left: 1%; */
     /* padding: 0; */
-    right: 0;
-    width: 30%;
+    /* right: 0;
+    width: 30%; */
 }
 .aside3 {
     margin-top: 2%;
@@ -250,7 +250,7 @@ li{
     padding: 5%; 
     margin-left: 2%;
     font-weight: 500;
-
+    
 }
 
 .profile-link a {
@@ -275,7 +275,7 @@ li{
 
 .follow a {
     text-decoration: none;
-
+   
 }
 .ff {
     font-size: 1.2rem;
@@ -351,7 +351,7 @@ li{
     .push2 {
         padding-top: 40%;
     }
-
+        
 }
 
 

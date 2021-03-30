@@ -1,157 +1,168 @@
 {%extends 'base.html'%}
+{% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<div class="main">
-    {% if images %}
-    {% for image in images %}
-    <div class="section">
-        <div class="top-section">
-            <div class="d-flex">
+<div class="main row">
+    <div class="col-xs-12 col-md-1"></div>
+    <div class="col-xs-12 col-md-6">
+        {% if images %}
+        {% for image in images %}
+        <div class="card" style="margin-bottom: 5rem;">
+            <div class="card-header d-flex">
                 <div class="profile-pic">
-                    <a href="#">
+                    <a href="/profile/{{image.profile.id}}">
                         <img class="picture" src="{{image.profile.profile_pic.url}}" alt="user">
+                    </a>
                 </div>
                 <div class="profile">
-                    <a href="#" class="profile_tag">{{image.profile}}</a>
+                    <a href="/profile/{{image.profile.id}}" class="profile_tag">{{image.profile}}</a>
                 </div>
             </div>
-        </div>
-        <div class="upload">
-            <img class="upload-content" src="{{image.image.url}}">
-        </div>
-        <div class="upload-actions">
-            <form action="{% url 'like_image' image_id=image.id %}">
-                {% csrf_token %}
-                <button type="submit" name="image_id" value={{image.id}}
-                    style="border: 0px; background-color: transparent; padding-top: 25%; padding-right: 80%;"><i
-                        class="far fa-heart"></i></button>
-            </form>
-        </div>
-        <div class="liked">
-            <p class="liked-count">{{image.likes.count}} likes</p>
-        </div>
-        <div class="upload-caption">
-            <span class="post">
-                <a href="#" class="likes">{{image.profile}}</a>
-                <span class="post-link">
-                    {{image.caption}}
-                </span>
-            </span>
-        </div>
-        <div class="comments">
-            <p class="text-muted" style="font-size: 1.4rem;">Comments...</p>
-        </div>
-        {% for comment in comments %}
-        {% if comment.image.id == image.id %}
-        <div class="upload-caption comments">
-            <span class="comment-post">
-                <a href="#" class="likes">{{comment.user}}</a>
-                <span class="post-link">{{comment.content}}</span>
-            </span>
-        </div>
-        {% endif %}
-        {% endfor %}
-        <div class="time-stamp liked">{{image.post_date | timesince }} ago</div>
-        <div class="submit">
-            <div id="comment">
+            <img src="{{image.image.url}}" class="card-img-top" alt="upload" style="height: 40rem;object-fit: cover;">
+            <div class="card-body">
+                <form action="{% url 'like_image' image_id=image.id %}">
+                    {% csrf_token %}
+                    <button type="submit" name="image_id" value={{image.id}}
+                        style="border: 0px; background-color: transparent; margin-bottom: 1rem;"><i
+                            class="far fa-heart"></i></button>
+                </form>
+                <div class="liked-count">{{image.likes.count}} likes</div>
+                <div class="post">
+                    <a href="#" class="likes">{{image.profile}}</a>
+                    <span class="post-link">{{image.caption}}</span>
+                    <div class="text-muted" style="font-size: 1.4rem;margin-top: 1%;">Comments...</div>
+                    {% for comment in comments %}
+                    {% if comment.image.id == image.id %}
+                    <div>
+                        <a href="#" class="likes"><em style="font-size: 1.2rem;">{{comment.user}}</em></a>
+                        <span class="post-link"><em style="font-size: 1.2rem;">{{comment.content}}</em></span>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="text-muted">{{image.post_date | timesince }} ago</div>
+                </div>
+            </div>
+            <div class="card-footer" style="padding: 0;">
                 <form role="add_comment" , action="{% url 'comment' image_id=image.id %}">
                     {% csrf_token%}
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Add a comment" name="comment">
+                        <input type="text" class="form-control" placeholder="Add a comment" name="comment"
+                            style="font-size: 1.2rem; border: 0;">
                         <div class="input-group-btn">
-                            <button class="btn" type="submit"> Post</button>
+                            <button class="btn" type="submit" style="font-size: 1.2rem;"> Post</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    <div class="section">
+        {% endfor %}
+        {% else %}
         <div class="nothing text-center">
             <h2>Nothing to see</h2>
             <h2>Get started on Instagram by following an Instagram user or share an image to see images on the timeline.
             </h2>
         </div>
+        {% endif %}
     </div>
-    {% endif %}
-    <!-- Aside section- Pc screen alone -->
-    <div class="aside-section">
-        <div class="aside3">
-            <div class="aside3-t">
-                <div class="aside2-top">
-                    <div class="aside2-top1 tp3">
-                        Suggestions
+    <div class="col-xs-12 col-md-1"></div>
+    <div class="col-xs-12 col-md-3">
+        <div class="card">
+            <div class="card-header" style="font-size: 1.2rem;">
+                Suggestions for you
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for prof in suggestions %}
+                {% if prof == loggedIn%}
+                {% else %}
+                <li class="list-group-item d-flex">
+                    <div class="profile-pic">
+                        <a href="/profile/{{prof.id}}"><img src="{{prof.profile_pic.url}}" alt="avatar"
+                                class="picture"></a>
                     </div>
-                </div>
-                <div class="aside3-body">
-                    <div class="st">
-                        {% for prof in suggestions %}
-    {% if prof == loggedIn%}
-    {% else %}
-                        <div class="suggestions">
-                            <div class="sugg-pix">
-                                <a href="/profile/{{prof.id}}"><img src="{{prof.profile_pic.url}}" alt="avatar"
-                                    class="picture"></a>
-                            </div>
-                            <div class="profile-info">
-                                <span class="profile-link s-link">
-                                    <a href="/profile/{{prof.id}}">{{prof.user.username}}</a>
-                                </span>
-                            </div>
+                    <div class="profile">
+                        <a href="/profile/{{prof.id}}" class="profile_tag">{{prof.user.username}}</a>
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- <div class="aside-section" style="position: fixed; top: 12%; right: 10%; z-index: -2;">
+            <div class="aside3">
+                <div class="aside3-t">
+                    <div class="aside2-top">
+                        <div class="aside2-top1 tp3">
+                            Suggestions
                         </div>
-                        {% endif %}
-    {% endfor %}
+                    </div>
+                    <div class="aside3-body">
+                        <div class="st">
+                            {% for prof in suggestions %}
+                            {% if prof == loggedIn%}
+                            {% else %}
+                            <div class="suggestions">
+                                <div class="sugg-pix">
+                                    <a href="/profile/{{prof.id}}"><img src="{{prof.profile_pic.url}}" alt="avatar"
+                                            class="picture"></a>
+                                </div>
+                                <div class="profile-info">
+                                    <span class="profile-link s-link">
+                                        <a href="/profile/{{prof.id}}">{{prof.user.username}}</a>
+                                    </span>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
-    
+    <div class="col-xs-12 col-md-1"></div>
 </div>
 <footer>
     <div class="container">
-      <nav class="footer-nav">
-        <ul>
-          <li>
-            <a href="#">About us</a>
-          </li>
-          <li>
-            <a href="#">Support</a>
-          </li>
-          <li>
-            <a href="#">Press</a>
-          </li>
-          <li>
-            <a href="#">Api</a>
-          </li>
-          <li>
-            <a href="#">Jobs</a>
-          </li>
-          <li>
-            <a href="#">Privacy</a>
-          </li>
-          <li>
-            <a href="#">Terms</a>
-          </li>
-          <li>
-            <a href="#">Directory</a>
-          </li>
-          <li>
-            <a href="#">Profiles</a>
-          </li>
-          <li>
-            <a href="#">Hashtags</a>
-          </li>
-          <li>
-            <a href="#">Languages</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright-notice">
-        &copy; 2020 Instagram
-      </div>
+        <nav class="footer-nav">
+            <ul>
+                <li>
+                    <a href="#">About us</a>
+                </li>
+                <li>
+                    <a href="#">Support</a>
+                </li>
+                <li>
+                    <a href="#">Press</a>
+                </li>
+                <li>
+                    <a href="#">Api</a>
+                </li>
+                <li>
+                    <a href="#">Jobs</a>
+                </li>
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+                <li>
+                    <a href="#">Terms</a>
+                </li>
+                <li>
+                    <a href="#">Directory</a>
+                </li>
+                <li>
+                    <a href="#">Profiles</a>
+                </li>
+                <li>
+                    <a href="#">Hashtags</a>
+                </li>
+                <li>
+                    <a href="#">Languages</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright-notice">
+            &copy; 2020 Instagram
+        </div>
     </div>
 </footer>
 {% endblock %}

@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'clone.apps.CloneConfig',
+    'bootstrap4',
     'bootstrap3',
     'cloudinary',
+    'crispy_forms',
 ]
 
 cloudinary.config(
@@ -174,4 +176,5 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
+CRISPY_TEMPLATE_PACK='bootstrap4'
 django_heroku.settings(locals())

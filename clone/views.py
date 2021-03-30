@@ -16,7 +16,8 @@ def create_profile(request):
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
-        return redirect(home)
+        # return redirect(home)
+        return HttpResponseRedirect('/')
 
     else:
         form = CreateProfileForm()
@@ -225,11 +226,11 @@ def search(request):
         if is_following:
             return render(request, 'profile/profile.html', {"profile": profile, "images": images, "comments":comments, "unfollow_form": form_unfollow, "posts": posts, "title": title})
 
-        return render(request, 'profile/profile.html', {"profile": profile, "images": images, "comments":comments, "follow_form": form_follow, "posts": posts, "title": title})
+        return render(request, 'profile/profile.html', {"profile": profile, "images": images, "comments":comments, "follow_form": form_follow, "posts": posts, "title": title, "search":searched_user})
 
     else:
-        blank_message = "You haven't searched for any user."
-        return render(request, 'search.html',{"blank_message":blank_message})
+        no_search="You did not search for any user"
+        return render(request, 'profile/profile.html',{"no_search":no_search})
     
 
 def comment(request, image_id):

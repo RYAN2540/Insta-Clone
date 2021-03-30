@@ -1,14 +1,16 @@
 from django.test import TestCase
-from .models import Image, Comment, Profile
+from .models import Image, Comment, Profile, Follow
 from django.contrib.auth.models import User
 
-class ImageTestClas(TestCase):
+class ImageTestClass(TestCase):
     def setUp(self):
         self.ryan = User(username = "ryan", email = "ryan@gmail.com",password = "1234")
-        self.food = Image(image = 'imageurl', name ='food', caption = 'Chicken Taco', profile = self.ryan)
-        self.maua = Image(image = 'imageurl', name ='maua', caption = 'Lillies', profile = self.ryan)
+        self.profile = Profile(bio='bio', user= self.ryan)
+        self.food = Image(image = 'imageurl', name ='food', caption = 'Chicken Taco', profile = self.profile)
+        self.maua = Image(image = 'imageurl', name ='maua', caption = 'Lillies', profile = self.profile)
 
         self.ryan.save()
+        self.profile.save()
         self.food.save_image()
 
     def tearDown(self):
@@ -34,12 +36,13 @@ class ImageTestClas(TestCase):
 
     def test_get_profile_images(self):
         self.maua.save_image()
-        images = Image.get_profile_images(self.ryan)
+        images = Image.get_profile_images(self.profile)
         self.assertEqual(len(images),2)
 
-class ProfileTestClas(TestCase):
+class ProfileTestClass(TestCase):
     def setUp(self):
         self.ryan = User(username = "ryan", email = "ryan@gmail.com",password = "1234")
+        self.profile = Profile(bio='bio', user= self.ryan)
         self.ryan.save()
 
     def tearDown(self):
@@ -48,18 +51,21 @@ class ProfileTestClas(TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.ryan, User))
+        self.assertTrue(isinstance(self.profile, Profile))
 
     def test_search_user(self):
         user = Profile.search_user(self.ryan)
         self.assertEqual(len(user), 1)
 
-class CommentTestClas(TestCase):
+class CommentTestClass(TestCase):
     def setUp(self):
         self.ryan = User(username = "ryan", email = "ryan@gmail.com",password = "1234")
-        self.food = Image(image = 'imageurl', name ='food', caption = 'Chicken Taco', profile = self.ryan)
+        self.profile = Profile(bio='bio', user= self.ryan)
+        self.food = Image(image = 'imageurl', name ='food', caption = 'Chicken Taco', profile = self.profile)
         self.comment = Comment(image=self.food, content= 'Looks delicious', user = self.ryan)
 
         self.ryan.save()
+        self.profile.save()
         self.food.save_image()
         self.comment.save_comment()
 
@@ -85,3 +91,20 @@ class CommentTestClas(TestCase):
         comments = Comment.get_image_comments(self.food)
         self.assertEqual(comments[0].content, 'Looks delicious')
         self.assertTrue(len(comments) > 0)
+
+class FollowTestClass(TestCase):
+    def setUp(self):
+        self.ryan = User(username = "ryan", email = "ryan@gmail.com",password = "1234")
+        self.profile1 = Profile(bio='bio', user= self.ryan)        
+        self.rotich = User(username = "rotich", email = "rotich@gmail.com",password = "1234")
+        self.profile2 = Profile(bio='bio', user= self.rotich) 
+        self.ryan.save()
+        self.rotich.save()
+        self.follow = Follow (followed = self.profile1, follower = self.profile2 )
+        
+    def tearDown(self):
+        Profile.objects.all().delete()        
+        User.objects.all().delete()
+        
+    def test_instance(self):
+        self.assertTrue(isinstance(self.follow,Follow))

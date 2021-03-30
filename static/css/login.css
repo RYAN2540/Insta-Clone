@@ -64,7 +64,13 @@ a{
     margin-top: 3rem;
     margin-right: 10rem;
 }
+.form-data-reg{
+    max-width: 58rem !important;
+}
 
+.form-data-prof{
+    max-width: 50rem !important;
+}
 .form-data form{
     background-color: #fff;
     border: 2px solid #eee;
@@ -79,6 +85,11 @@ a{
     margin-bottom: 2.5rem;
 }
 
+.logo-reg img{
+    width: 10rem;
+    margin-bottom: 1rem;
+}
+
 .intro{
     color: #8e8e8e;
     color: rgba(var(--f52,142,142,142),1);
@@ -89,9 +100,9 @@ a{
     text-align: center;
 
 }
-.form-data label{
+/* .form-data label{
     display: none;
-}
+} */
 
 .form-group .help-block{
     font-size: 1.2rem;

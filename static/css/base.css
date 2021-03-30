@@ -8,65 +8,64 @@
 
 *,
 *::before,
-*::after {
+*::after{
     margin: 0;
     padding: 0;
     box-sizing: inherit;
 }
 
-html {
+html{
     font-size: 10px;
     box-sizing: border-box;
 }
 
-#login img {
+#login img{
     width: 100%;
     max-width: 100%;
     height: 100%;
 }
 
-a {
+a{
     text-decoration: none;
     color: inherit;
 }
 
-#login body {
+#login body{
     background-color: #fafafa;
 }
 
-#wrapper {
+#wrapper{
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 10rem;
 }
 
-#login .container {
+#login .container{
     width: 100%;
     max-width: 93.5rem;
     margin: 3rem auto 0;
 }
 
-#wrapper>.container {
+#wrapper > .container{
     display: flex;
     padding: 0 8rem;
 }
 
-.phone-app-demo {
+.phone-app-demo{
     height: 61.8rem;
     background: url('../../static/images/phones.png') center no-repeat;
     flex: 1;
 }
 
-.form-data {
+.form-data{
     width: 100%;
     max-width: 35rem;
     margin-top: 3rem;
 }
 
-.form-data form {
+.form-data form{
     background-color: #fff;
     border: 2px solid #eee;
     display: flex;
@@ -75,23 +74,22 @@ a {
     text-align: center;
 }
 
-.logo img {
+.logo img{
     width: 17.5rem;
     margin-bottom: 2.5rem;
 }
 
-.form-data form input {
+.form-data form input{
     padding: 0.8rem;
     margin-bottom: 0.5rem;
     border: 2px solid #eee;
     border-radius: 0.4rem;
 }
 
-.input-group .form-control {
+.input-group .form-control{
     z-index: 0 !important;
 }
-
-.form-btn {
+.form-btn{
     margin: 1rem 0 1.5rem;
     height: 3rem;
     background-color: #3897f0;
@@ -103,15 +101,14 @@ a {
     cursor: pointer;
 }
 
-.has-separator {
+.has-separator{
     font-size: 1.3rem;
     color: #999999;
     position: relative;
     margin-bottom: 2.5rem;
 }
 
-.has-separator::before,
-.has-separator::after {
+.has-separator::before, .has-separator::after{
     content: "";
     position: absolute;
     background-color: #eee;
@@ -121,32 +118,32 @@ a {
     transform: translateY(-50%);
 }
 
-.has-separator.has-separator::before {
-    left: 0;
+.has-separator.has-separator::before{
+    left:0;
 }
 
-.has-separator.has-separator::after {
-    right: 0;
+.has-separator.has-separator::after{
+    right:0;
 }
 
-.facebook-login {
+.facebook-login{
     font-size: 1.4rem;
     font-weight: bold;
     color: #385185;
     margin-bottom: 2.5rem;
 }
 
-.facebook-login i {
+.facebook-login i{
     font-size: 2rem;
     margin-right: 0.7rem;
 }
 
-.password-reset {
+.password-reset{
     font-size: 1.2rem;
     color: #003569
 }
 
-.sign-up {
+.sign-up{
     text-align: center;
     font-size: 1.4rem;
     color: #262626;
@@ -156,43 +153,43 @@ a {
     margin: 1rem 0;
 }
 
-.sign-up a {
+.sign-up a{
     color: #3897f0;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
-.get-the-app {
+.get-the-app{
     font-size: 1.4rem;
     text-align: center;
 }
 
-.get-the-app span {
+.get-the-app span{
     display: block;
     margin: 2rem 0;
     color: #262626;
 }
 
-.badges {
+.badges{
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.badges img {
+.badges img{
     max-width: 14rem;
     cursor: pointer;
 }
 
-.badges img:first-child {
+.badges img:first-child{
     margin-right: 1rem;
 }
 
-footer {
+footer{
     padding: 5rem 0;
 }
 
-footer .container {
+footer .container{
     display: flex;
     justify-content: space-between;
     font-weight: bold;
@@ -202,69 +199,69 @@ footer .container {
     flex-wrap: wrap;
 }
 
-.footer-nav ul {
+.footer-nav ul{
     display: flex;
     flex-wrap: wrap;
     list-style: none;
 }
 
-.footer-nav ul li {
+.footer-nav ul li{
     margin-right: 1.6rem;
 }
 
-.footer-nav ul li a {
+.footer-nav ul li a{
     color: #003569;
 }
 
-.copyright-notice {
+.copyright-notice{
     color: #999999;
 }
 
-@media (max-width: 900px) {
-    .phone-app-demo {
+@media (max-width: 900px){
+    .phone-app-demo{
         display: none;
     }
 
-    .form-data {
+    .form-data{
         margin: 0 auto;
     }
 
-    #wrapper>.container {
+    #wrapper > .container{
         padding: 0;
     }
 
-    footer .container {
+    footer .container{
         padding: 0 2rem;
         justify-content: center;
     }
 
-    .footer-nav ul {
+    .footer-nav ul{
         justify-content: center;
     }
 
-    .footer-nav ul li {
+    .footer-nav ul li{
         margin-bottom: 1rem;
     }
 }
 
-@media(max-width: 450px) {
-    #wrapper {
+@media(max-width: 450px){
+    #wrapper{
         padding-top: 0;
     }
 
-    .form-data form {
+    .form-data form{
         background-color: transparent;
         border: none;
         padding: 0 2rem;
     }
 
-    .sign-up {
+    .sign-up{
         background-color: transparent;
         border: none;
         margin: 4rem 0;
     }
 
-    footer {
+    footer{
         padding-bottom: 2rem;
     }
 }
@@ -274,7 +271,7 @@ footer .container {
 /*
 
 .top {
-
+   
     background-color: #fff;
     border-bottom: 1px solid #dbdbdb;
     height: 6rem;
@@ -285,7 +282,6 @@ footer .container {
     z-index: 1;
     position: fixed;
 }
-
 .top-items {
     display: flex;
     height: 6rem;
@@ -301,13 +297,13 @@ footer .container {
 }
 
 .logo-area {
-    display: flex;
+    display: flex; 
     flex: 1 9999 0%;
     min-width: 40px;
     justify-content: flex-start;
     flex-direction: row;
     align-content: stretch;
-
+ 
 }
 
 .search-box {
@@ -331,16 +327,13 @@ footer .container {
     text-align: center;
     top: 0;
 }
-
 .search-box:hover {
     transform: translateY(-2px);
     box-shadow: 1px 3px 1px rgb(53, 52, 52);
 }
-
 .search-box:active {
     transform: scaleX(1.04);
 }
-
 .ic {
     left: 55px;
     opacity: 0.5;
@@ -378,6 +371,7 @@ footer .container {
     margin-right: 25px;
     opacity: 0.8;
 }
+
 .statuses {
     height: 120px;
     outline: 0;
@@ -386,37 +380,31 @@ footer .container {
     display: block;
     padding: 10px 0;
 }
-
 .full {
     display: none;
 }
-
 .status {
     flex-direction: row;
     padding-left: 8px;
     padding-right: 8px;
     height: 120px;
 }
-
 .status-ride {
     display: flex;
     padding-left: 0px;
     padding-right: 8880px;
 }
-
 .status_ {
     height: 122px;
     padding: 0 16px;
     width: 80px;
 }
-
 .status-pix {
     border: 3px solid rgb(190, 76, 47);
     height: 66px;
     width: 66px;
     border-radius: 50%;
 }
-
 .pix {
     height: 60px;
     width: 60px;
@@ -480,20 +468,16 @@ footer .container {
 .opt {
     margin-top: 2%;
 }
-
 .profile {
     margin: 10px 15px;
 }
-
 .profile_tag {
     font-size: 1.4rem;
 }
-
 .profile a {
     text-decoration: none;
     color: #262626;
 }
-
 .op {
     height: 3px;
     width: 3px;
@@ -524,7 +508,6 @@ footer .container {
     padding: 0px 16px;
     margin: 4px 0px 0px;
 }
-
 .u-actions-li {
     height: 40px;
     width: 40px;
@@ -534,35 +517,29 @@ footer .container {
     background: 0;
     padding-right: 8px;
 }
-
 .aside-tag {
     width: 80%;
     align-content: flex-end;
     display: block;
     padding: 0;
 }
-
 .tag {
-    float: right;
+   float: right;
 }
-
 .liked {
     margin: 0px 0px 8px;
     padding: 0px 16px;
     font-size: 1.4rem;
 }
-
 .liked-count {
     font-size: 1.4rem;
 }
-
 .likes {
     font-weight: 650;
     text-decoration: none;
     color: #262626;
     font-size: 1.4rem;
 }
-
 .others {
     font-weight: 650;
     text-decoration: none;
@@ -571,12 +548,10 @@ footer .container {
     background: 0;
     font-size: 1.4rem;
 }
-
 .upload-caption {
     padding: 0px 16px;
     margin-bottom: 4px;
 }
-
 .post {
     font-size: 1.4rem;
 }
@@ -591,20 +566,16 @@ footer .container {
     padding: 0px 16px;
     margin-bottom: 6px;
 }
-
 .comment {
     padding-right: 6px;
     opacity: 0.5;
 }
-
 .like {
     float: right;
 }
-
-.push {
+.push{
     padding-left: 50px;
 }
-
 .submit {
     border-top: 1px solid #efefef;
     color: #999;
@@ -613,7 +584,6 @@ footer .container {
     justify-content: center;
     margin-top: 4px;
 }
-
 .ssub {
     align-items: center;
     display: flex;
@@ -621,10 +591,9 @@ footer .container {
     flex-grow: 1;
     flex-shrink: 1;
     position: relative;
-    padding: 0px 16px;
+    padding: 0px 16px; 
     margin: 4px 0px 0px;
 }
-
 .texta {
     background: 0 0;
     border: 0;
@@ -638,7 +607,6 @@ footer .container {
     padding: 0;
     resize: none;
 }
-
 .button {
     opacity: .3;
     pointer-events: none;
@@ -652,11 +620,13 @@ footer .container {
     background-color: transparent;
 }
 
+
 .aside-section {
     display: flex;
     flex-direction: column;
     height: 850px;
     padding-left: 1%;
+    
     right: 0;
     width: 30%;
 }
@@ -700,7 +670,6 @@ footer .container {
     margin-top: 20px;
     margin-left: 20px;
 }
-
 .user a {
     text-decoration: none;
     color: #3b3b3b;
@@ -723,19 +692,20 @@ footer .container {
     width: 50px;
     align-content: flex-end;
 }
-
 .upload-actions {
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 4px;
 }
 
+
+
 .aside2 {
     width: 80%;
     background-color: #fff;
     border: 1px solid #dbdbdb;
     border-radius: 4px;
-    height: 190px;
+    height: 190px;  
 }
 
 
@@ -751,7 +721,6 @@ footer .container {
     color: #3b3b3b;
     font-size: 1.2rem;
 }
-
 .aside2-top2 {
     margin: 2%;
     padding-right: 5px;
@@ -763,7 +732,6 @@ footer .container {
     text-decoration: none;
     color: #262626;
 }
-
 .aside2-body {
     height: 150px;
     overflow: auto;
@@ -778,7 +746,6 @@ footer .container {
     width: 100%;
     padding-top: 4px;
 }
-
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -786,10 +753,10 @@ footer .container {
 
 
 .profile-link {
-    padding: 5%;
+    padding: 5%; 
     margin-left: 2%;
     font-weight: 500;
-
+    
 }
 
 .profile-link a {
@@ -798,7 +765,6 @@ footer .container {
     color: #262626;
     font-size: 1.5rem;
 }
-
 .time-stamp {
     margin-left: 4px;
     opacity: 0.7;
@@ -825,11 +791,9 @@ footer .container {
     display: flex;
     padding: 3px;
 }
-
 .see-all {
     padding-right: 2%;
 }
-
 .st {
     margin-top: 4px;
     margin-left: 2%;
@@ -837,7 +801,6 @@ footer .container {
     width: 100%;
     padding-top: 4px;
 }
-
 .sugg-pix {
     margin-top: 5px;
     height: 40px;
@@ -856,13 +819,15 @@ footer .container {
 
 .follow a {
     text-decoration: none;
-
+   
 }
 
 .ff {
     font-size: 1.2rem;
     color: rgb(40, 94, 212);
 }
+
+
 
 @media (max-width: 1024px) {
 
@@ -888,7 +853,9 @@ footer .container {
     }
 }
 
-@media (max-width: 768px) {
+
+
+@media (max-width: 768px) { 
     .top {
         height: 54px;
         padding: 0 20px;
@@ -930,90 +897,82 @@ footer .container {
     .push2 {
         padding-top: 40%;
     }
-
+        
 }
 
-@media (max-width: 414px) {
 
-    .search-box,
-    .sb {
+@media (max-width: 414px) {
+    .search-box, .sb{
         display: none;
     }
-
     .statuses {
         padding-top: 10%;
-    }
+    } 
     .main {
         height: 2200px;
     }
-
     .top {
         height: 54px;
         padding: 0 20px;
         max-width: 411px;
         position: sticky;
     }
-
     .top-items {
         width: 100%;
     }
-
     .acct-actions {
         left: 50%;
     }
-
-    .actions {
+   .actions {
         width: 185px;
-    }
+   }
+   .statuses {
+    margin: 0;
+    width: auto;
+    border: 0;
+    border-bottom: 1px solid #dbdbdb;
+    padding-left: 0;
+}
 
-    .statuses {
-        margin: 0;
-        width: auto;
-        border: 0;
-        border-bottom: 1px solid #dbdbdb;
-        padding-left: 0;
-    }
-
-    .section {
-        margin: 0;
-        background: #fafafa;
-        width: 100%;
-    }
-
-
-    .top-section {
-        background: #fafafa;
-    }
-
-    .section2 {
-        margin-top: 50px;
-    }
-
-    .comment {
-        display: none;
-    }
-
-    .submit {
-        display: none;
-    }
-
-    .upload-caption {
-        width: 90%;
-        margin-left: 4%;
-    }
+.section {
+    margin: 0;
+    background: #fafafa;
+    width: 100%;
+}
 
 
-    .u-actions-li {
-        padding-right: 0;
-    }
+.top-section {
+    background: #fafafa;
+}
 
-    .like {
-        margin-top: -15px;
-    }
+.section2 {
+    margin-top: 50px;
+}
+.comment {
+    display: none;
+}
 
-    .push2 {
-        padding-left: 50px;
-    }
+.submit {
+    display: none;
+}
+
+.upload-caption {
+    width: 90%;
+    margin-left: 4%;
+}
+
+
+.u-actions-li {
+    padding-right: 0;
+}
+
+.like {
+    margin-top: -15px;
+}
+.push2 {
+    padding-left: 50px;
+}
 
 }
-HOME*/
+ HOME */
+

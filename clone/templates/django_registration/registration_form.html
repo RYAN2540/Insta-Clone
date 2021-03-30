@@ -1,80 +1,24 @@
 {%extends "registration/base.html"%}
 {% load static %}
-{% load bootstrap3 %}
+{% load crispy_forms_tags %}
 {% block content %}
-<div id="wrapper" id="content">
+<div id="wrapper" id="content" style="padding-top: 0 !important;">
     <div class="register">
-        <div class="form-data">
+        <div class="form-data form-data-reg">
             <form action="/accounts/register/" method="post">
                 {% csrf_token %}
-                <div class="logo">
+                <div class="logo-reg">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="">
                 </div>
-                <h2 class="intro">Sign up to see photos and videos from your friends.</h2>
-                <button class="form-btn" style="background-color: #0095F6 !important;"><a href="#" class="facebook-login" style="color: white !important;">
-                  <i class="fab fa-facebook"></i>Log in with Facebook
-                </a></button>
-                <span class="has-separator">OR</span>
-                {% bootstrap_form form%}
-                <button class="form-btn" type="submit">Login</button>
-                <a href="#" class="password-reset">Forgot password?</a>
+                <h4 class="intro">Sign up to see photos and videos from your friends.</h4>
+                {{ form|crispy }}
+                <button class="form-btn" type="submit">Sign Up</button>
                 <input type="hidden" name="next" value="{{next}}">
             </form>
             <div class="sign-up">
                 Have an account?  <a href="/accounts/login/" class="ml-2">Login</a>
             </div>
-            <div class="get-the-app">
-                <span>Get the app</span>
-                <div class="badges">
-                    <img src="{% static 'images/ios.png' %}" alt="">
-                    <img src="{% static 'images/android.png' %}" alt="">
-                </div>                
-            </div>
         </div>
     </div>
-    <footer>
-        <div class="container">
-            <nav class="footer-nav">
-                <ul>
-                    <li>
-                        <a href="#">About us</a>
-                    </li>
-                    <li>
-                        <a href="#">Support</a>
-                    </li>
-                    <li>
-                        <a href="#">Press</a>
-                    </li>
-                    <li>
-                        <a href="#">Api</a>
-                    </li>
-                    <li>
-                        <a href="#">Jobs</a>
-                    </li>
-                    <li>
-                        <a href="#">Privacy</a>
-                    </li>
-                    <li>
-                        <a href="#">Terms</a>
-                    </li>
-                    <li>
-                        <a href="#">Directory</a>
-                    </li>
-                    <li>
-                        <a href="#">Profiles</a>
-                    </li>
-                    <li>
-                        <a href="#">Hashtags</a>
-                    </li>
-                    <li>
-                        <a href="#">Languages</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright-notice">
-                &copy; 2020 Instagram
-            </div>
-        </div>
-    </footer>
 </div>
 {% endblock %}

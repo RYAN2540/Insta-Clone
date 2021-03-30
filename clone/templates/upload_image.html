@@ -1,15 +1,13 @@
 {%extends 'base.html'%}
 {% load static %}
-{% load bootstrap3 %}
-{% block content %}}
+{% load bootstrap4 %}
+{% block content %}
 <div id="wrapper" id="content">
     <div class="register">
         <div class="form-data">
             <form action="{%url 'upload_image'%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="">
-                </div>
+                <h2 class="intro">Share an image</h2>
                 {% bootstrap_form form%}
                 <button class="form-btn" type="submit">Upload</button>
             </form>

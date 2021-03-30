@@ -1,115 +1,122 @@
 {%extends 'base.html'%}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 {% load static %}
 {% block content %}
-<main id="profile">
-    <header>
-        <!--  Right col  -->
-        <div class="col-left">
-            {% if profile.profile_pic %}
-            <img class="user-img"
-                style="width:15rem; height:15rem;object-fit: cover; margin-right: 10px; border-radius: 50%; "
-                src="{{profile.profile_pic.url}}" alt="">
-            {% endif %}
+<div class="row" style="padding-top: 2rem;">
+  <div class="col-xs-12 col-md-3"></div>
+  <div class="col-xs-12 col-md-6">
+    {% if no_search %}
+    <p class="text-center" style="font-size: 2rem;">{{no_search}}</p>
+    {% else %}
+    {% if profile %}
+    <div id="profile">
+      <div class="d-flex">
+        <div class="pro">
+          <img class="user-img"
+            style="width:12rem; height:12rem;object-fit: cover; margin-right: 3rem; border-radius: 50%; "
+            src="{{profile.profile_pic.url}}" alt="">
         </div>
-        <!-- Left Col  -->
-        <div class="col-right">
-            <h3>{{profile.user.username}}</h3>
-            {%if profile.user.username == request.user.username%}
-            {% else%}
-            {% if follow_form %}
-            <form action="/profile/{{profile.id}}" method="post">
-                {%csrf_token%}
-                {% bootstrap_form follow_form%}
-                <input type="submit" class=" btn btn-primary" name="follow" value="Follow"
-                    style="background-color: #003569 !important; padding: 5px;">
-            </form>
-            {% endif %}
-            {% if unfollow_form %}
-            <form action="/profile/{{profile.id}}" method="post">
-                {%csrf_token%}
-
-                {% bootstrap_form unfollow_form%}
-                <input type="submit" class=" btn btn-info" name="unfollow" value="Unfollow"
-                    style="background-color: #003569 !important; padding: 5px;">
-            </form>
-            {% endif %}
-            {% endif %}
+        <div class="profile" style="padding-top: 3rem;">
+          <h3 style="font-weight: 700;">{{profile.user.username}}</h3>
+          <em style="font-size: 1.2rem;">{{profile.bio}}</em>
+          {%if profile.user.username == request.user.username%}
+          {% else%}
+          {% if follow_form %}
+          <form action="/profile/{{profile.id}}" method="post" style="margin-top: 2rem;">
+            {%csrf_token%}
+            {% bootstrap_form follow_form%}
+            <input type="submit" class=" btn btn-primary" name="follow" value="Follow"
+              style="background-color: #003569 !important; padding: 6px 9px;">
+          </form>
+          {% endif %}
+          {% if unfollow_form %}
+          <form action="/profile/{{profile.id}}" method="post" style="margin-top: 2rem;">
+            {%csrf_token%}
+            {% bootstrap_form unfollow_form%}
+            <input type="submit" class=" btn btn-info" name="unfollow" value="Unfollow"
+              style="color: #003569 !important; padding: 6px 9px;">
+          </form>
+          {% endif %}
+          {% endif %}
         </div>
-    </header>
-    <article>
-        <p>{{profile.bio}}</p>
-    </article>
-    <aside>
+      </div>
+      <div class="d-flex" style="margin-top: 2rem;">
         <div class='col-stats'>
-            <strong>{{posts}}</strong>
-            <br />
-            posts
-        </div>
-        <div class='col-stats'>
-            <strong>{{profile.followers}}</strong>
-            <br />
-            followers
+          <strong style="font-size: 1.4rem;">{{posts}}</strong>
+          <br />
+          <p style="font-size: 1.2rem;">posts</p>
         </div>
         <div class='col-stats'>
-            <strong>{{profile.following}}</strong>
-            <br />
-            following
+          <strong style="font-size: 1.4rem;">{{profile.followers}}</strong>
+          <br />
+          <p style="font-size: 1.2rem;">followers</p>
         </div>
-    </aside>
-    <div class="row">
+        <div class='col-stats'>
+          <strong style="font-size: 1.4rem;">{{profile.following}}</strong>
+          <br />
+          <p style="font-size: 1.2rem;">following</p>
+        </div>
+      </div>
+      <div class="row">
         {% if images %}
         {% for image in images %}
         <div class="col-md-4 col-sm-4" style="object-fit: cover;">
-            <img src="{{image.image.url}}" alt="" style="width: 20rem; height: 20rem; object-fit: cover;">
+          <img src="{{image.image.url}}" alt="" style="width: 20rem; height: 20rem; object-fit: cover;">
         </div>
         {% endfor %}
         {% endif %}
-    </div>
+      </div>
 
-</main>
-<footer>
-    <div class="container">
-        <nav class="footer-nav">
-            <ul>
-                <li>
-                    <a href="#">About us</a>
-                </li>
-                <li>
-                    <a href="#">Support</a>
-                </li>
-                <li>
-                    <a href="#">Press</a>
-                </li>
-                <li>
-                    <a href="#">Api</a>
-                </li>
-                <li>
-                    <a href="#">Jobs</a>
-                </li>
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">Directory</a>
-                </li>
-                <li>
-                    <a href="#">Profiles</a>
-                </li>
-                <li>
-                    <a href="#">Hashtags</a>
-                </li>
-                <li>
-                    <a href="#">Languages</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="copyright-notice">
-            &copy; 2020 Instagram
-        </div>
     </div>
+    {% else %}
+    <h5 style="font-size: 2rem;">No user with username "{{search}}"</h5>
+    {% endif %}
+    {% endif %}
+  </div>
+  <div class="col-xs-12 col-md-3"></div>
+</div>
+<footer>
+  <div class="container">
+    <nav class="footer-nav">
+      <ul>
+        <li>
+          <a href="#">About us</a>
+        </li>
+        <li>
+          <a href="#">Support</a>
+        </li>
+        <li>
+          <a href="#">Press</a>
+        </li>
+        <li>
+          <a href="#">Api</a>
+        </li>
+        <li>
+          <a href="#">Jobs</a>
+        </li>
+        <li>
+          <a href="#">Privacy</a>
+        </li>
+        <li>
+          <a href="#">Terms</a>
+        </li>
+        <li>
+          <a href="#">Directory</a>
+        </li>
+        <li>
+          <a href="#">Profiles</a>
+        </li>
+        <li>
+          <a href="#">Hashtags</a>
+        </li>
+        <li>
+          <a href="#">Languages</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright-notice">
+      &copy; 2020 Instagram
+    </div>
+  </div>
 </footer>
 {% endblock %}
