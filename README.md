@@ -1,29 +1,26 @@
-# La Galleria
-#### La Galleria - a Django based personal gallery , 22/03/2021.
+# Insta Clone
+#### Insta Clone - a Django based carbon copy of the popular Instagram web app, 30/03/2021.
 #### By Ryan Rotich
 <img src="./static/images/landing.png"
      alt="landing"
      style="width=100%;" />
 ## Description
-La Galleria is a Django based personal gallery. 
+Insta Clone is a Django based carbon copy of the popular Instagram web app. 
 Noteable features of the app include:
 <table>
 <tr>
 <td>
-1. Admin portal:
-Here, the app owner is required to login in by providing necessary credentials. Upon succesful login, they can then proceed to upload, update or delete an image. They can also create, delete and edit image loactions and categories.
+1. More on the Description
+Insta Clone is a clone app of Instagram. It is meant to emulate Instagram web app's functionalities and UI
 <br>
-2. Image details:
-To view the image details, click on the respective image and a modal pops up. The modal has various features which are:
-- Modal header: This contains the image name
-- Modal body: This contains the magnified image, share icon, the category tag, image location, date and time the image was posted and last but not least, the image description
+2. User Authentication:
+On this app a user can sign up for a profile, log into their account, update their profile with a bio and profile picture.
 <br>
-3. Image filtering by category and location:
-- By category: To view images in the same category, one can search by category name in the search form located in the navbar or by clicking on the category tag located in the image modal
-- By location: To view images from the same location, the user can click on the location name which is in the image modal
+3. Image sharing with a Community access:
+Post photos, search for and follow other users, view posts of people followed on the timeline, like and comment
 <br>
-4. Image sharing: 
-Spotted an image you'd love to share? The application allows for image sharing. To share a specific image, click on the image to reveal the image modal then click on the share icon which copies the share link to your clipboard.
+4. More functionality on the Users: 
+Users can also update captions of images they posted, delete their images, unfollow users, and even delete their profiles.
 </td>
 </tr>
 </table> 
@@ -59,6 +56,9 @@ Technologies used to develop this application:
 6. HTML 
 7. CSS
 
+## Future Works
+1. Implement User(Profile Stories) in the app.
+2. Work on polishing to truly emulate the Instagram web app.
 
 ## Support and contact details
 
