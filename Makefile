@@ -5,5 +5,5 @@ migrations:
 	python manage.py makemigrations clone
 
 migrate:
-	python3.9 manage.py migrate
+	python3 manage.py migrate
 
