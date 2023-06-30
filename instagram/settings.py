@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import cloudinary
-import django_heroku
 import dj_database_url
 from decouple import config,Csv
 
@@ -98,7 +97,7 @@ if config('MODE')=="dev":
            'USER': config('DB_USER'),
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
-           'PORT': '',
+           'PORT': '5432',
        }
 
    }
@@ -171,6 +170,7 @@ REGISTRATION_OPEN= True
 ACCOUNT_ACTIVATION_DAYS = 7
 
 # Email configurations remember to install python-decouple
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')
@@ -178,4 +178,3 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 CRISPY_TEMPLATE_PACK='bootstrap4'
-django_heroku.settings(locals())
