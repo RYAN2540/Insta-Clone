@@ -13,12 +13,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import cloudinary
 import dj_database_url
-from decouple import config,Csv
+from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-MODE=config("MODE", default="dev")
+MODE = config("MODE", default="dev")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -45,13 +45,14 @@ INSTALLED_APPS = [
     'bootstrap3',
     'cloudinary',
     'crispy_forms',
+    'crispy_bootstrap4'
 ]
 
 cloudinary.config(
-  cloud_name = config('CLOUD_NAME'),
-  api_key = config('API_KEY'),
-  api_secret = config('API_SECRET'),
-  cloudinary_url = config('CLOUDINARY_URL'),
+    cloud_name=config('CLOUD_NAME'),
+    api_key=config('API_KEY'),
+    api_secret=config('API_SECRET'),
+    cloudinary_url=config('CLOUDINARY_URL'),
 )
 
 MIDDLEWARE = [
@@ -89,29 +90,28 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if config('MODE')=="dev":
-   DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql_psycopg2',
-           'NAME': config('DB_NAME'),
-           'USER': config('DB_USER'),
-           'PASSWORD': config('DB_PASSWORD'),
-           'HOST': config('DB_HOST'),
-           'PORT': '5432',
-       }
+if config('MODE') == "dev":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': '5432',
+        }
 
-   }
+    }
 # production
 else:
-   DATABASES = {
-       'default': dj_database_url.config(
-           default=config('DATABASE_URL')
-       )
-   }
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=config('DATABASE_URL')
+        )
+    }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-
 
 
 # Password validation
@@ -166,7 +166,7 @@ LOGIN_URL = "/accounts/login/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 
-REGISTRATION_OPEN= True
+REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
 
 # Email configurations remember to install python-decouple
@@ -177,4 +177,4 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-CRISPY_TEMPLATE_PACK='bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
